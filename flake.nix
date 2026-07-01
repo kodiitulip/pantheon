@@ -16,6 +16,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     # vintagestory-nix.url = "github:PierreBorine/vintagestory-nix";
   };
 
@@ -24,9 +25,9 @@
     let
       inherit (inputs.nixpkgs) lib;
       mkFlake = inputs.flake-parts.lib.mkFlake { inherit inputs; };
-      importModules = inputs.import-tree (i: i.filterNot lib.hasInfix "flake.nix") (
-        i: i.filterNot lib.hasInfix "templates/"
-      );
+      importModules = inputs.import-tree (i: i.filterNot (lib.hasInfix "flake.nix")) (
+        i: i.filterNot (lib.hasInfix "templates/")
+      ) (i: i ./.);
     in
-    mkFlake (importModules ./.);
+    mkFlake importModules;
 }

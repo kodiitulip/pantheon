@@ -1,15 +1,15 @@
 {
   flake.templates = {
     rust-project = {
-      path = ./rust;
+      path = ./templates/rust;
       description = "A simple Rust project flake";
     };
     dioxus = {
-      path = ./dioxus;
+      path = ./templates/dioxus;
       description = "A Dioxus project flake";
     };
     godot = {
-      path = ./godot;
+      path = ./templates/godot;
       description = "Godot development environment";
     };
   };
