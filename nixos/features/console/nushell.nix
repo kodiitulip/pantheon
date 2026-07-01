@@ -1,6 +1,11 @@
 {
   flake.nixosModules.console =
-    { pkgs, lib, config, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     {
       hjem.users.${config.preferences.user.name}.rum.programs = {
         zoxide = {

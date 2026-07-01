@@ -1,25 +1,25 @@
-{ inputs, ...}:
+{ inputs, ... }:
 {
-    flake.nixosModules.hjem =
-    { pkgs, config, ... }:
+  flake.nixosModules.hjem =
+    { config, ... }:
     let
-        inherit (config.preferences.user) name face;
+      inherit (config.preferences.user) name face;
     in
     {
-        imports = [
-            inputs.hjem.nixosModules.default
-        ];
+      imports = [
+        inputs.hjem.nixosModules.default
+      ];
 
-        hjem = {
-            extraModules = [ inputs.hjem-rum.hjemModules.default ];
-            users."${name}" = {
-                enable = true;
-                directory = "/home/${name}";
-                user = "${name}";
-                files.".face.icon".source = face;
-            };
-
-            clobberByDefault = true;
+      hjem = {
+        extraModules = [ inputs.hjem-rum.hjemModules.default ];
+        users."${name}" = {
+          enable = true;
+          directory = "/home/${name}";
+          user = "${name}";
+          files.".face.icon".source = face;
         };
+
+        clobberByDefault = true;
+      };
     };
 }

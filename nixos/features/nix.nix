@@ -2,12 +2,7 @@
   flake.nixosModules.nix =
     { pkgs, config, ... }:
     {
-      #imports = [
-      #  inputs.nix-index-database.nixosModules.nix-index
-      #];
       programs = {
-        #nix-index-database.comma.enable = true;
-
         direnv = {
           enable = true;
           silent = true;
