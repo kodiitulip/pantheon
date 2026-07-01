@@ -8,14 +8,20 @@
     {
       imports = [ inputs.spicetify-nix.nixosModules.spicetify ];
 
-      hjem.users.${config.preferences.user.name}.packages = with pkgs; [ pear-desktop ];
+      hjem.users.${config.preferences.user.name}.packages = with pkgs; [
+        pear-desktop
+        config.programs.spicetify.spicedSpotify
+      ];
 
       programs.spicetify = {
-        enable = true;
+        enable = false;
         enabledExtensions = with spicePkgs.extensions; [
           adblockify
           hidePodcasts
           shuffle
+          fullAppDisplay
+          keyboardShortcut
+          spicyLyrics
         ];
         theme = spicePkgs.themes.text // {
           additionalCss = ''
