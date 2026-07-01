@@ -25,6 +25,7 @@
 
     networking.hostName = "persephone";
     services.openssh.enable = true;
+    services.flatpak.enable = true;
 
     users.users.kodie = {
       isNormalUser = true;
