@@ -10,6 +10,7 @@
     imports = with self.nixosModules; [
       base
       hjem
+      console
 
       nix
       git

@@ -9,7 +9,6 @@
     hjem.users.${config.preferences.user.name}.packages = with pkgs; [
       kdePackages.kate
       neovim
-      kitty
       prismlauncher
       easyeffects
       r2modman
