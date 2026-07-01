@@ -11,19 +11,11 @@
       };
 
       networking.networkmanager.enable = true;
-      networking.firewall = {
-        allowedTCPPorts = [
-          3000
-          8080
-          25565
-          35565
-        ];
-        allowedUDPPorts = [ ];
-      };
 
       services.xserver.xkb = {
         layout = "br";
-        variant = "";
+        variant = "nodeadkeys";
+        options = "compose:rctrl";
       };
 
       time.timeZone = "America/Fortaleza";

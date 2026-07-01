@@ -5,49 +5,54 @@
   };
 
   flake.nixosModules.persephone =
-  { pkgs, config, ... }:
-  {
-    imports = with self.nixosModules; [
-      base
-      hjem
-      console
+    { pkgs, ... }:
+    {
+      imports = with self.nixosModules; [
+        base
+        hjem
+        console
 
-      nix
-      git
+        nix
+        git
 
-      kde
+        kde
 
-      gaming
+        gaming
 
-      obs-studio
-      music
-    ];
+        obs-studio
+        music
+      ];
 
-    networking.hostName = "persephone";
-    services.openssh.enable = true;
-    services.flatpak.enable = true;
+      networking.hostName = "persephone";
+      services = {
+        openssh.enable = true;
+        flatpak.enable = true;
+      };
 
-    users.users.kodie = {
-      isNormalUser = true;
-      description = "kodie";
-      extraGroups = [ "networkmanager" "wheel" ];
-      initialPassword = "kodie";
-      shell = pkgs.nushell;
+      users.users.kodie = {
+        isNormalUser = true;
+        description = "kodie";
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
+        initialPassword = "kodie";
+        shell = pkgs.nushell;
+      };
+
+      preferences.user = {
+        name = "kodie";
+        face = ./avatar.png;
+      };
+
+      programs = {
+        firefox.enable = true;
+      };
+
+      nixpkgs.config.allowUnfree = true;
+
+      environment.systemPackages = [ ];
+
+      system.stateVersion = "26.05"; # WARN: No changing wili nilli
     };
-
-    preferences.user = {
-      name = "kodie";
-      face = ./avatar.png;
-    };
-
-    programs = {
-      firefox.enable = true;
-    };
-
-    nixpkgs.config.allowUnfree = true;
-
-    environment.systemPackages = [ ];
-
-    system.stateVersion = "26.05"; # WARN: No changing wili nilli
-  };
 }
