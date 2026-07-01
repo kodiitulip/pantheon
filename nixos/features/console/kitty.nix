@@ -11,7 +11,7 @@
     in
     {
         environment.systemPackages = [ pkgs.kitty ];
-        fonts.packages = with pkgs.nerd-fonts; [ fira-mono ];
+        fonts.packages = with pkgs.nerd-fonts; [ fira-code ];
         hjem.users.${config.preferences.user.name}.rum.programs.kitty = {
             enable = true;
             settings = {

@@ -1,0 +1,118 @@
+{
+  flake.nixosModules.console =
+    { pkgs, lib, config, ... }:
+    {
+      hjem.users.${config.preferences.user.name}.rum.programs = {
+        zoxide = {
+          enable = true;
+          integrations.nushell.enable = true;
+        };
+        nushell = {
+          enable = true;
+          aliases = {
+            btw = ''print "I use NixOS, btw"'';
+            vi = "nvim";
+            vim = "nvim";
+
+            e = "exit";
+            lg = "lazygit";
+            reload = "exec nu";
+            gw = "./gradlew";
+            cr = "cargo run";
+            crq = "cr --quiet";
+            cb = "cargo build";
+            cbq = "cb --quiet";
+            ct = "cargo test";
+            ctq = "ct --quiet";
+            ".." = "z ..";
+            "..." = "z ../..";
+            "3.." = "z ../../..";
+            "4.." = "z ../../../..";
+            "5.." = "z ../../../../";
+          };
+
+          plugins = with pkgs.nushellPlugins; [
+            query
+            formats
+            semver
+          ];
+
+          settings = {
+            show_banner = false;
+            buffer_editor = "nvim";
+            use_kitty_protocol = true;
+            edit_mode = "vi";
+          };
+
+          extraConfig = ''
+            def --env get-env [name] { $env | get $name }
+            def --env set-env [name, value] { load-env { $name: $value } }
+            def --env unset-env [name] { hide-env $name }
+
+            def greeter []: nothing -> string {
+              $"\n\t(ansi '#5BCFFA')Ｈ(ansi '#F5ABB9')ｅ(ansi '#FFFFFF')ｌ(ansi '#F5ABB9')ｌ(ansi '#5BCFFA')ｏ　(ansi '#5BCFFA')Ｋ(ansi '#F5ABB9')ｏ(ansi '#FFFFFF')ｄ(ansi '#F5ABB9')ｉ(ansi '#5BCFFA')ｅ\t(ansi '#5BCFFA') (ansi '#F5ABB9')"
+            }
+
+            def c [] {clear; greeter}
+
+            def ztls [] {
+              sudo zerotier-cli listnetworks | str replace -m -r -a '200 listnetworks ' "" | lines | skip 1 | split column ' ' 'id' 'name' 'mac' 'status' 'type' 'dev' 'ip'
+            }
+
+            def "nu-complete-zoxide-path" [context: string] {
+              let parts = $context | split row " " | skip 1
+              {
+                options: {
+                  sort: false,
+                  completion_algorithm: fuzzy,
+                  case_sensitive: false,
+                },
+                completions: (^zoxide query --list --exclude $env.PWD -- ...$parts
+                | lines
+                | each {
+                    if ($in | str starts-with $env.PWD) {path relative-to $env.PWD}
+                    else $in | str replace '/home/${config.preferences.user.name}' '~'
+                }),
+              }
+            }
+
+            def --env --wrapped z [...rest: string@"nu-complete-zoxide-path"] {
+              __zoxide_z ...$rest
+            }
+
+            print (greeter)
+
+            export-env { load-env {
+                VISUAL: "nvim"
+                EDITOR: "nvim"
+                SUDO_PROMPT: (^${lib.getExe pkgs.starship} prompt --profile=sudo_prompt --terminal-width (term size).columns)
+                STARSHIP_LOG: "error"
+                NU_EXPERIMENTAL_OPTIONS: "native-clip"
+
+                PROMPT_MULTILINE_INDICATOR: (^${lib.getExe pkgs.starship} prompt --continuation)
+                TRANSIENT_PROMPT_MULTILINE_INDICATOR: (^${lib.getExe pkgs.starship} prompt --continuation)
+
+                TRANSIENT_PROMPT_INDICATOR: ""
+
+                TRANSIENT_PROMPT_COMMAND: {||
+                  (
+                    let cmd_duration = if $env.CMD_DURATION_MS == "0823" { 0 } else { $env.CMD_DURATION_MS };
+                    ^${lib.getExe pkgs.starship} prompt
+                      --profile=transient
+                      --cmd-duration $cmd_duration
+                      $"--status=($env.LAST_EXIT_CODE)"
+                      --terminal-width (term size).columns
+                      --jobs (job list | length)
+                  )
+                }
+            }}
+
+            source ${
+              pkgs.runCommand "carapace-init-nu" { }
+                ''${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"''
+            }
+          '';
+        };
+      };
+    };
+}

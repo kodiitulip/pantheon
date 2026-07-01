@@ -63,7 +63,6 @@
           continuation_prompt = " [∙](bold fg:iris) ";
           character = {
             format = " $symbol ";
-            symbol = "[󱞪](bold fg:iris)";
             success_symbol = "[󱞪](bold fg:iris)";
             error_symbol = "[󱞪](bold fg:love)";
           };
