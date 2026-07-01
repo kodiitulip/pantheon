@@ -6,8 +6,11 @@
     import-tree.url = "github:denful/import-tree";
 
     # disko.url = "github:nix-comunity/disko";
-    # hjem.follows = "hjem-rum/hjem";
-    # hjem-rum.url = "github:snugnug/hjem-rum";
+    hjem.follows = "hjem-rum/hjem";
+    hjem-rum = {
+      url = "github:snugnug/hjem-rum";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";

@@ -1,6 +1,9 @@
-{ inputs, ... }: {
-  perSystem = {pkgs,...}: {packages.zen = pkgs.wrapFirefox
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
+{ inputs, ... }:
+{
+  perSystem =
+  { pkgs, ...}:
+  {
+    packages.zen = (pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
     {
       nativeMessagingHosts = [ pkgs.firefoxpwa ];
       extraPolicies = {
@@ -65,5 +68,6 @@
           ];
         };
       };
-    };};
+    });
+  };
 }
