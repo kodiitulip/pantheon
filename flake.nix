@@ -24,8 +24,9 @@
     let
       inherit (inputs.nixpkgs) lib;
       mkFlake = inputs.flake-parts.lib.mkFlake { inherit inputs; };
-      importModules = inputs.import-tree.filterNot (lib.hasInfix "flake.nix");
+      importModules = inputs.import-tree (i: i.filterNot lib.hasInfix "flake.nix") (
+        i: i.filterNot lib.hasInfix "templates/"
+      );
     in
     mkFlake (importModules ./.);
 }
-
