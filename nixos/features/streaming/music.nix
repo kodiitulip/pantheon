@@ -19,7 +19,6 @@
           adblockify
           hidePodcasts
           shuffle
-          fullAppDisplay
           keyboardShortcut
           spicyLyrics
         ];
