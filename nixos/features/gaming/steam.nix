@@ -1,6 +1,6 @@
 {
     flake.nixosModules.gaming =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
         programs.steam = {
             enable = true;
@@ -9,5 +9,6 @@
             remotePlay.openFirewall = true;
             localNetworkGameTransfers.openFirewall = true;
         };
+        hjem.users.${config.preferences.user.name}.packages = [ pkgs.steam-art-manager ];
     };
 }

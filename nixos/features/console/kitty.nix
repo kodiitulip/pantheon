@@ -27,6 +27,7 @@
                 tab_powerline_style = "slanted";
                 tab_title_template = ''" {index} {title} "'';
 
+                cursor_shape = "beam";
                 cursor_trail = 3;
 
                 map = [
