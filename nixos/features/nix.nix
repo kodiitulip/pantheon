@@ -31,12 +31,9 @@
             hide_env_diff = true;
           };
         };
-        rum.programs = {
-          direnv.integrations.nushell.enable = true;
-          nix-your-shell = {
-            integrations.nushell.enable = true;
-            enable = true;
-          };
+        rum.programs.nix-your-shell = {
+          integrations.nushell.enable = true;
+          enable = true;
         };
       };
 
