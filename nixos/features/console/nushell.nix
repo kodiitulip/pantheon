@@ -119,8 +119,7 @@
 
             $env.config = ($env.config? | default {})
             $env.config.hooks = ($env.config.hooks? | default {})
-            $env.config.hooks.pre_prompt = (
-            $env.config.hooks.pre_prompt?
+            $env.config.hooks.pre_prompt = ($env.config.hooks.pre_prompt?
             | default []
             | append {||
               ${lib.getExe pkgs.direnv} export json
@@ -142,7 +141,7 @@
               }
               | into record
               | load-env
-            }
+            })
           '';
         };
       };
