@@ -2,6 +2,7 @@
   flake.nixosModules.gaming =
     { pkgs, config, ... }:
     {
+      programs.gamemode.enable = true;
       programs.steam = {
         enable = true;
         extest.enable = true;
