@@ -7,8 +7,10 @@
         plugins = with pkgs.obs-studio-plugins; [
           wlrobs
           waveform
-          obs-websocket
           obs-pipewire-audio-capture
+          droidcam-obs
+          advanced-scene-switcher
+          obs-scene-as-transition
           obs-vkcapture
           obs-tuna
         ];
