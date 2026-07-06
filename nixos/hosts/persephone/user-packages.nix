@@ -19,7 +19,6 @@
           withVencord = true;
           withOpenASAR = true;
         })
-        overlayed
 
         prismlauncher
       ];
