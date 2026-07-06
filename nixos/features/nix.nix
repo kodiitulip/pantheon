@@ -53,6 +53,7 @@
         alejandra
         manix
         nix-inspect
+        nixfmt
       ];
     };
 }

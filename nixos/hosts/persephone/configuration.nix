@@ -48,6 +48,9 @@
       programs = {
         firefox.enable = true;
       };
+      hardware.opentabletdriver.enable = true;
+      hardware.uinput.enable = true;
+      boot.kernelModules = [ "uinput" ];
 
       nixpkgs.config.allowUnfree = true;
 
