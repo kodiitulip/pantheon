@@ -7,6 +7,12 @@
       ...
     }:
     {
+      environment.systemPackages = with pkgs.nushellPlugins; [
+        query
+        formats
+        semver
+      ];
+
       hjem.users.${config.preferences.user.name}.rum.programs = {
         zoxide = {
           enable = true;

@@ -60,7 +60,7 @@
             "[](fg:overlay)[  ](bg:overlay fg:rose)[](fg:overlay) "
             "[](fg:rose) "
           ];
-          continuation_prompt = " [∙](bold fg:iris) ";
+          continuation_prompt = " [∙](bold fg:iris)  ";
           character = {
             format = " $symbol ";
             success_symbol = "[󱞪](bold fg:iris)";
