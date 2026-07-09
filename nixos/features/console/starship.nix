@@ -1,4 +1,3 @@
-{ self, ... }:
 {
   flake.nixosModules.console =
     { lib, config, ... }:
@@ -38,29 +37,28 @@
             "$character"
           ];
           palettes.rose-pine = {
-            overlay = self.theme.rose-pine-dark.base02;
-            love = self.theme.rose-pine-dark.base06;
-            gold = self.theme.rose-pine-dark.base07;
-            rose = self.theme.rose-pine-dark.base08;
-            pine = self.theme.rose-pine-dark.base09;
-            foam = self.theme.rose-pine-dark.base0A;
-            iris = self.theme.rose-pine-dark.base0B;
+            overlay = "black";
+            love = "red";
+            gold = "yellow";
+            rose = "cyan";
+            pine = "green";
+            foam = "blue";
+            iris = "purple";
+            text = "white";
           };
           palette = "rose-pine";
           profiles.transient = lib.concatStrings [
             "[](fg:overlay)"
             "$sudo"
             "[ 󰧱 ](bg:overlay fg:iris)"
-            "[](fg:overlay) "
-            "$fill"
-            "$time\n"
+            "[](fg:overlay)\n"
             " [∙](bold fg:iris) "
           ];
           profiles.sudo_prompt = lib.concatStrings [
             "[](fg:overlay)[  ](bg:overlay fg:rose)[](fg:overlay) "
             "[](fg:rose) "
           ];
-          continuation_prompt = " [∙](bold fg:iris)  ";
+          continuation_prompt = " [∙](bold fg:iris)   ";
           character = {
             format = " $symbol ";
             success_symbol = "[󱞪](bold fg:iris)";

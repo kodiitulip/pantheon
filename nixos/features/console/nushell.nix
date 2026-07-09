@@ -61,7 +61,22 @@
             def --env unset-env [name] { hide-env $name }
 
             def greeter []: nothing -> string {
-              $"\n\t(ansi '#5BCFFA')Ｈ(ansi '#F5ABB9')ｅ(ansi '#FFFFFF')ｌ(ansi '#F5ABB9')ｌ(ansi '#5BCFFA')ｏ　(ansi '#5BCFFA')Ｋ(ansi '#F5ABB9')ｏ(ansi '#FFFFFF')ｄ(ansi '#F5ABB9')ｉ(ansi '#5BCFFA')ｅ\t(ansi '#5BCFFA') (ansi '#F5ABB9')"
+              let trans_blue = {
+                fg: "#5BCFFA",
+                bg: "black",
+                attr: "bold"
+              }
+              let trans_pink = {
+                fg: "#F5ABB9",
+                bg: "black",
+                attr: "bold"
+              }
+              let trans_white = {
+                fg: "#FFFFFF",
+                bg: "black",
+                attr: "bold"
+              }
+              $"\n\t(ansi black)(ansi --escape $trans_blue) Ｈ(ansi --escape $trans_pink)ｅ(ansi --escape $trans_white)ｌ(ansi --escape $trans_pink)ｌ(ansi --escape $trans_blue)ｏ　(ansi --escape $trans_blue)Ｋ(ansi --escape $trans_pink)ｏ(ansi --escape $trans_white)ｄ(ansi --escape $trans_pink)ｉ(ansi --escape $trans_blue)ｅ    (ansi --escape $trans_blue) (ansi --escape $trans_pink) (ansi rst)(ansi black)(ansi rst)"
             }
 
             def c [] {clear; greeter}
