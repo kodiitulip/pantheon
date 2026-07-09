@@ -16,7 +16,7 @@
           };
         })
       ];
-      environment.systemPackages = with pkgs; [ (gh) ];
+      environment.systemPackages = with pkgs; [ gh ];
       programs = {
         lazygit = {
           enable = true;

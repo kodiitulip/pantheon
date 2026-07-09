@@ -5,11 +5,10 @@
   };
 
   flake.nixosModules.persephone =
-    { pkgs, ... }:
+    # { pkgs, ... }:
     {
       imports = with self.nixosModules; [
         base
-        hjem
         console
 
         nix
@@ -21,6 +20,7 @@
 
         obs-studio
         music
+        art
       ];
 
       networking.hostName = "persephone";
@@ -29,18 +29,20 @@
         flatpak.enable = true;
       };
 
-      users.users.kodie = {
-        isNormalUser = true;
-        description = "kodie";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        initialPassword = "kodie";
-        shell = pkgs.nushell;
-      };
+      # users.users.kodie = {
+      #   isNormalUser = true;
+      #   description = "kodie";
+      #   extraGroups = [
+      #     "networkmanager"
+      #     "wheel"
+      #   ];
+      #   initialPassword = "kodie";
+      #   shell = pkgs.nushell;
+      # };
 
       preferences.user = {
+        enable = true;
+        enableHjemUser = true;
         name = "kodie";
         face = ./avatar.png;
       };
@@ -48,7 +50,6 @@
       programs = {
         firefox.enable = true;
       };
-      hardware.opentabletdriver.enable = true;
       hardware.uinput.enable = true;
       boot.kernelModules = [ "uinput" ];
 
