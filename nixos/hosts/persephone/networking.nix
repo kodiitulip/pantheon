@@ -1,5 +1,10 @@
 {
   flake.nixosModules.persephone = _: {
+    networking.hosts = {
+      "172.24.145.167" = [ "julia-servers" ];
+      "172.24.97.165" = [ "julia" ];
+    };
+
     networking.firewall = {
       allowedTCPPorts = [
         80
