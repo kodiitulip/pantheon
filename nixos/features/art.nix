@@ -4,7 +4,9 @@
     {
       hjem.users.${config.preferences.user.name}.packages = with pkgs; [
         krita
-        pixelorama
+        aseprite
+        blockbench
+        blender
       ];
 
       hardware.opentabletdriver.enable = true;

@@ -2,8 +2,8 @@
   flake.nixosModules.obs-studio = {
     services.nginx = {
       enable = true;
-      virtualHosts."layout.kodie.stream" = {
-        root = "/home/kodie/Projects/Streaming/layout";
+      virtualHosts."layout.stream" = {
+        root = "/var/www/stream-layout";
         listen = [
           {
             addr = "0.0.0.0";
@@ -12,10 +12,10 @@
         ];
         locations = {
           "/" = {
-            tryFiles = "$uri $uri.html $uri/ =404";
+            tryFiles = "$uri $uri.html $uri/index.html $uri/ =404";
           };
           "/music" = {
-            tryFiles = "$uri $uri.html $uri/ =404";
+            tryFiles = "$uri $uri.html $uri/index.html $uri/ =404";
           };
           "/404.html" = {
             extraConfig = ''
@@ -30,7 +30,7 @@
     };
     networking = {
       hosts = {
-        "127.0.0.1" = [ "layout.kodie.stream" ];
+        "127.0.0.1" = [ "layout.stream" ];
       };
       firewall.allowedTCPPorts = [
         80
