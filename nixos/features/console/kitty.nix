@@ -16,14 +16,17 @@
     in
     {
       environment.systemPackages = [ pkgs.kitty ];
-      fonts.packages = with pkgs.nerd-fonts; [ fira-code ];
+      fonts.packages = with pkgs.nerd-fonts; [
+        fira-code
+        caskaydia-cove
+      ];
       hjem.users.${config.preferences.user.name}.rum.programs.kitty = {
         enable = true;
         settings = {
           enable_audio_bell = "no";
 
           font_size = 10;
-          font_family = "FiraCode Nerd Font Mono";
+          font_family = "CaskaydiaCove Nerd Font Mono";
 
           allow_remote_control = "yes";
           shell_integration = "enabled";

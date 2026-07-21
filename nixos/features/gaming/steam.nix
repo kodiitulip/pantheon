@@ -12,7 +12,17 @@
         protontricks.enable = true;
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
+        extraPackages = with pkgs; [
+          gamescope
+          hidapi
+        ];
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
       };
-      hjem.users.${config.preferences.user.name}.packages = [ pkgs.steam-art-manager ];
+      hjem.users.${config.preferences.user.name}.packages = with pkgs; [
+        steam-art-manager
+        protonup-qt
+      ];
     };
 }
