@@ -36,6 +36,7 @@
             extraGroups = [
               "networkmanager"
               "wheel"
+              "uinput"
             ];
             initialPassword = name;
             shell = pkgs.nushell;

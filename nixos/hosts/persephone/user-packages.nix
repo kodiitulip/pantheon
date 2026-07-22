@@ -20,6 +20,8 @@
           withOpenASAR = true;
         })
 
+        sunshine
+
         prismlauncher
       ];
     };
