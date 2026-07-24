@@ -20,6 +20,7 @@
         rar
         kdePackages.partitionmanager
         vlc
+        pwvucontrol
       ];
     };
 }

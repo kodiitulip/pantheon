@@ -10,18 +10,14 @@
         kdePackages.kate
         neovim
         zed-editor
-
         easyeffects
         selfpkgs.zen
-
         r2modman
         (discord.override {
           withVencord = true;
           withOpenASAR = true;
         })
-
-        sunshine
-
+        stremio-linux-shell
         prismlauncher
       ];
     };

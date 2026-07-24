@@ -50,17 +50,7 @@
 
       nixpkgs.config.allowUnfree = true;
 
-      environment.systemPackages = with pkgs; [
-        # pavucontrol
-        pwvucontrol
-      ];
-
-      services.sunshine = {
-        enable = true;
-        autoStart = true;
-        capSysAdmin = true;
-        openFirewall = true;
-      };
+      environment.systemPackages = with pkgs; [ vim ];
 
       system.stateVersion = "26.05"; # WARN: No changing wili nilly
     };
