@@ -10,7 +10,7 @@
     {
       imports = [ inputs.noctalia-greeter.nixosModules.default ];
 
-      environment.systemPackages = [ ];
+      environment.systemPackages = with pkgs; [ rose-pine-cursor rose-pine-icon-theme ];
 
       services.displayManager.sddm.enable = lib.mkForce false;
 

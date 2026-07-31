@@ -93,3 +93,9 @@ window-rule {
 //     default-window-height { proportion 1.0; }
 //     open-focused true
 // }
+
+output "HDMI-A-1" {
+    position x=0 y=0
+    focus-at-startup
+    mode "1600x900@75.000"
+}

@@ -5,17 +5,31 @@
     {
       environment.systemPackages = with pkgs; [
         xwayland-satellite # xwayland support
+        nemo
+        nwg-look
+        adw-gtk3
+        kdePackages.qt6ct
         kdePackages.dolphin
         hyprpicker
         mpv
         mpvpaper
         python3
       ];
+      environment.variables = {
+        QT_QPA_PLATFORMTHEME = "qt6ct";
+      };
+      xdg.portal = {
+        enable = true;
+        extraPortals = [
+          pkgs.xdg-desktop-portal-gtk
+          pkgs.xdg-desktop-portal-gnome
+        ]; # Fixes OpenURI and cursor themes in flatpaks
+        config.niri = {
+          "org.freedesktop.impl.portal.FileChooser" = [ "kde" ]; # use "gtk" if something breaks iguess
+        };
+      };
 
       programs.niri.enable = true;
-      xdg.portal.config.niri = {
-        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ]; # use "gtk" if something breaks iguess
-      };
 
       hjem.users.${config.preferences.user.name}.rum.desktops.niri = {
         enable = true;
@@ -24,7 +38,7 @@
         ];
         config = builtins.readFile ./niri.kdl + ''
           layout {
-            gaps 12
+            gaps 8
             center-focused-column "never"
             preset-column-widths {
                 proportion 0.5
@@ -122,6 +136,7 @@
               "toggle"
             ];
           };
+
           "Mod+Space".spawn = [
             "noctalia"
             "msg"
@@ -141,6 +156,7 @@
             "session"
             "lock"
           ];
+
           "Mod+Tab" = {
             parameters.repeat = false;
             action = "toggle-overview";
@@ -149,6 +165,7 @@
             parameters.repeat = false;
             action = "close-window";
           };
+
           "Mod+H".action = "focus-column-left";
           "Mod+J".action = "focus-window-or-workspace-down";
           "Mod+K".action = "focus-window-or-workspace-up";
@@ -191,6 +208,7 @@
           "Mod+Shift+Ctrl+Down".action = "move-column-to-monitor-down";
           "Mod+Shift+Ctrl+Up".action = "move-column-to-monitor-up";
           "Mod+Shift+Ctrl+Right".action = "move-column-to-monitor-right";
+
           "Mod+WheelScrollDown" = {
             parameters.cooldown-ms = 100;
             action = "focus-workspace-down";
@@ -211,10 +229,12 @@
           "Mod+Shift+WheelScrollUp".action = "focus-column-left";
           "Mod+Ctrl+Shift+WheelScrollDown".action = "move-column-right";
           "Mod+Ctrl+Shift+WheelScrollUp".action = "move-column-left";
+
           "Mod+BracketLeft".action = "consume-or-expel-window-left";
           "Mod+BracketRight".action = "consume-or-expel-window-right";
           "Mod+Comma".action = "consume-window-into-column";
           "Mod+Period".action = "expel-window-from-column";
+
           "Mod+R".action = "switch-preset-column-width";
           "Mod+Shift+R".action = "switch-preset-column-width-back";
           "Mod+Ctrl+Shift+R".action = "switch-preset-window-height";
@@ -223,6 +243,7 @@
           "Mod+Shift+F".action = "maximize-column";
           "Ctrl+Alt+F".action = "maximize-window-to-edges";
           "Mod+Ctrl+F".action = "expand-column-to-available-width";
+
           "Mod+C".action = "center-column";
           "Mod+Ctrl+C".action = "center-visible-columns";
           "Mod+S".action = "toggle-window-floating";
@@ -231,6 +252,7 @@
           "Mod+Equal".action = ''set-column-width "+10%"'';
           "Mod+Shift+Minus".action = ''set-window-height "-10%"'';
           "Mod+Shift+Equal".action = ''set-window-height "+10%"'';
+
           "Mod+W".action = "toggle-column-tabbed-display";
           "Mod+1".action = "focus-workspace 1";
           "Mod+2".action = "focus-workspace 2";
@@ -259,6 +281,7 @@
           "Mod+Ctrl+7".action = "move-column-to-workspace 7";
           "Mod+Ctrl+8".action = "move-column-to-workspace 8";
           "Mod+Ctrl+9".action = "move-column-to-workspace 9";
+
           "Print".spawn = [
             "noctalia"
             "msg"
@@ -339,6 +362,7 @@
             "msg"
             "screenshot-region"
           ];
+
           "Mod+Escape" = {
             parameters.allow-inhibiting = false;
             action = "toggle-keyboard-shortcuts-inhibit";
