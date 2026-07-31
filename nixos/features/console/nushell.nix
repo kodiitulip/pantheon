@@ -7,11 +7,19 @@
       ...
     }:
     {
-      environment.systemPackages = with pkgs.nushellPlugins; [
-        query
-        formats
-        semver
-      ];
+      environment = {
+        systemPackages = with pkgs.nushellPlugins; [
+          query
+          formats
+          semver
+        ];
+        variables = {
+          EDITOR = "nvim";
+          VISUAL = "nvim";
+          NU_EXPERIMENTAL_OPTIONS = "native-clip";
+          STARSHIP_LOG = "error";
+        };
+      };
 
       hjem.users.${config.preferences.user.name}.rum.programs = {
         zoxide = {
@@ -29,6 +37,7 @@
             lg = "lazygit";
             reload = "exec nu";
             gw = "./gradlew";
+            c = "clear";
             cr = "cargo run";
             crq = "cr --quiet";
             cb = "cargo build";
@@ -53,6 +62,8 @@
             buffer_editor = "nvim";
             use_kitty_protocol = true;
             edit_mode = "vi";
+            completions.algorithm = "fuzzy";
+            highlight_resolved_externals = true;
           };
 
           extraConfig = ''
@@ -61,85 +72,29 @@
             def --env unset-env [name] { hide-env $name }
 
             def greeter []: nothing -> string {
-              let trans_blue = {
-                fg: "#5BCFFA",
-                bg: "black",
-                attr: "bold"
-              }
-              let trans_pink = {
-                fg: "#F5ABB9",
-                bg: "black",
-                attr: "bold"
-              }
-              let trans_white = {
-                fg: "#FFFFFF",
-                bg: "black",
-                attr: "bold"
-              }
-              $"\n\t(ansi black)(ansi --escape $trans_blue) Ｈ(ansi --escape $trans_pink)ｅ(ansi --escape $trans_white)ｌ(ansi --escape $trans_pink)ｌ(ansi --escape $trans_blue)ｏ　(ansi --escape $trans_blue)Ｋ(ansi --escape $trans_pink)ｏ(ansi --escape $trans_white)ｄ(ansi --escape $trans_pink)ｉ(ansi --escape $trans_blue)ｅ    (ansi --escape $trans_blue) (ansi --escape $trans_pink) (ansi rst)(ansi black)(ansi rst)"
+              $"\n  (ansi black_bold)(ansi {bg: black})(ansi "#5BCFFA") Ｈ(ansi "#F5ABB9")ｅ(ansi white)ｌ(ansi "#F5ABB9")ｌ(ansi "#5BCFFA")ｏ　(ansi "#5BCFFA")Ｋ(ansi "#F5ABB9")ｏ(ansi white)ｄ(ansi "#F5ABB9")ｉ(ansi "#5BCFFA")ｅ (ansi "#5BCFFA") (ansi "#F5ABB9") (ansi {fg: black, bg: none})(ansi rst)"
             }
 
-            def c [] {clear; greeter}
+            def --env --wrapped clear [...rest: string] { clear ...$rest; print (greeter)}
 
             def ztls [] {
               sudo zerotier-cli listnetworks | str replace -m -r -a '200 listnetworks ' "" | lines | skip 1 | split column ' ' 'id' 'name' 'mac' 'status' 'type' 'dev' 'ip'
             }
 
-            def "nu-complete-zoxide-path" [context: string] {
-              let parts = $context | split row " " | skip 1
-              {
-                options: {
-                  sort: false,
-                  completion_algorithm: fuzzy,
-                  case_sensitive: false,
-                },
-                completions: (^zoxide query --list --exclude $env.PWD -- ...$parts
-                | lines
-                | each {
-                    if ($in | str starts-with $env.PWD) {path relative-to $env.PWD}
-                    else $in | str replace '/home/${config.preferences.user.name}' '~'
-                }),
-              }
-            }
-
-            def --env --wrapped z [...rest: string@"nu-complete-zoxide-path"] {
-              __zoxide_z ...$rest
+            def --env --wrapped df [...rest: string] {
+              df -h ...$rest | lines | skip 1 | split column -r  '\s+' filesystem 1K-blocks Used Available Use% "Mounted On" | sort
             }
 
             print (greeter)
 
             export-env { load-env {
-                VISUAL: "nvim"
-                EDITOR: "nvim"
-                SUDO_PROMPT: (^${lib.getExe pkgs.starship} prompt --profile=sudo_prompt --terminal-width (term size).columns)
-                STARSHIP_LOG: "error"
-                NU_EXPERIMENTAL_OPTIONS: "native-clip"
-
+                SUDO_PROMPT: (^${lib.getExe pkgs.starship} prompt --profile=sudo_prompt --terminal-width=((term size).columns))
                 PROMPT_MULTILINE_INDICATOR: (^${lib.getExe pkgs.starship} prompt --continuation)
                 TRANSIENT_PROMPT_MULTILINE_INDICATOR: (^${lib.getExe pkgs.starship} prompt --continuation)
-
                 TRANSIENT_PROMPT_INDICATOR: ""
-
-                TRANSIENT_PROMPT_COMMAND: {||
-                  (
-                    let cmd_duration = if $env.CMD_DURATION_MS == "0823" { 0 } else { $env.CMD_DURATION_MS };
-                    ^${lib.getExe pkgs.starship} prompt
-                      --profile=transient
-                      --cmd-duration $cmd_duration
-                      $"--status=($env.LAST_EXIT_CODE)"
-                      --terminal-width (term size).columns
-                      --jobs (job list | length)
-                  )
-                }
+                TRANSIENT_PROMPT_COMMAND: {|| (^starship prompt --profile=transient --cmd-duration=($env.CMD_DURATION_MS) --status=($env.LAST_EXIT_CODE) --terminal-width=((term size).columns) --jobs=(job list | length)) }
             }}
 
-            source ${
-              pkgs.runCommand "carapace-init-nu" { }
-                ''${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"''
-            }
-
-            $env.config = ($env.config? | default {})
-            $env.config.hooks = ($env.config.hooks? | default {})
             $env.config.hooks.pre_prompt = ($env.config.hooks.pre_prompt?
             | default []
             | append {||

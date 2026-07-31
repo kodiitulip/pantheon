@@ -14,6 +14,7 @@
         nix
         git
 
+        desktop
         kde
 
         gaming

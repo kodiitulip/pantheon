@@ -19,6 +19,15 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     # vintagestory-nix.url = "github:PierreBorine/vintagestory-nix";
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

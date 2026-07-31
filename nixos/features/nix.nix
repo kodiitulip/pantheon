@@ -47,7 +47,6 @@
       };
 
       environment.systemPackages = with pkgs; [
-        nil
         nixd
         statix
         alejandra
