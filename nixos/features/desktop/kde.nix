@@ -1,9 +1,9 @@
 {
   flake.nixosModules.kde =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       services = {
-        displayManager.sddm.enable = !config.programs.noctalia-greeter.enable;
+        displayManager.sddm.enable = true;
         desktopManager.plasma6.enable = true;
       };
       security.rtkit.enable = true;

@@ -54,7 +54,7 @@
           plugins = with pkgs.nushellPlugins; [
             query
             formats
-            semver
+            # semver
           ];
 
           settings = {

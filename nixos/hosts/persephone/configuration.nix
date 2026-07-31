@@ -16,6 +16,7 @@
 
         desktop
         kde
+        niri
 
         gaming
 
