@@ -15,8 +15,8 @@
           enable = true;
           config = {
             credential = {
-              "https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential get";
-              "https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential get";
+              "https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
+              "https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
             };
             push.autoSetupRemote = true;
             pull.rebase = true;
