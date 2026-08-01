@@ -25,10 +25,6 @@
               "gh:"
               "github:"
             ];
-            user = {
-              name = "kodiitulip";
-              email = "kodii.tulip@proton.me";
-            };
           };
         };
       };
