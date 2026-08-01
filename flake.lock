@@ -253,6 +253,7 @@
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "spicetify-nix": "spicetify-nix",
+        "vintagestory-nix": "vintagestory-nix",
         "zen-browser": "zen-browser"
       }
     },
@@ -287,6 +288,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vintagestory-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785507638,
+        "narHash": "sha256-f6BR4CVlShQTtKJJkRZWtC+uo5yFdsxVuF+AH/CcZMM=",
+        "owner": "PierreBorine",
+        "repo": "vintagestory-nix",
+        "rev": "d8da5d554b571fe14413672c3fdf2717290d5d5d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PierreBorine",
+        "repo": "vintagestory-nix",
         "type": "github"
       }
     },

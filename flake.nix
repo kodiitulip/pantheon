@@ -5,7 +5,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:denful/import-tree";
 
-    # disko.url = "github:nix-comunity/disko";
     hjem.follows = "hjem-rum/hjem";
     hjem-rum = {
       url = "github:snugnug/hjem-rum";
@@ -18,7 +17,10 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-    # vintagestory-nix.url = "github:PierreBorine/vintagestory-nix";
+    vintagestory-nix = {
+      url = "github:PierreBorine/vintagestory-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";

@@ -54,6 +54,7 @@
         manix
         nix-inspect
         nixfmt
+        cachix
       ];
     };
 }

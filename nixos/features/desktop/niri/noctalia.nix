@@ -14,6 +14,10 @@
         rose-pine-cursor
         rose-pine-icon-theme
         sqlite
+        hyprpicker
+        mpv
+        mpvpaper
+        python3
       ];
 
       services.displayManager.sddm.enable = lib.mkForce false;
