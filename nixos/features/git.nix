@@ -15,16 +15,11 @@
           enable = true;
           config = {
             credential = {
-              "https://github.com".helper = [
-                ""
-                "${pkgs.gh}/bin/gh auth git-credential"
-              ];
-              "https://gist.github.com".helper = [
-                ""
-                "${pkgs.gh}/bin/gh auth git-credential"
-              ];
+              "https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential get";
+              "https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential get";
             };
             push.autoSetupRemote = true;
+            pull.rebase = true;
             init.defaultBranch = "main";
             url."https://github.com/".insteadOf = [
               "gh:"
