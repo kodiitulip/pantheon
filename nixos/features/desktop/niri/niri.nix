@@ -10,6 +10,7 @@
         nwg-look
         adw-gtk3
         kdePackages.qt6ct
+        dconf-editor
       ];
       environment.variables = {
         QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -31,8 +32,8 @@
       services.gvfs.enable = true;
 
       programs.niri.enable = true;
-      hjem.users.${config.preferences.user.name} = {
-        rum.desktops.niri = {
+      hjem.users.${config.preferences.user.name}.rum = {
+        desktops.niri = {
           enable = true;
           spawn-at-startup = [
             [ "noctalia" ]
@@ -373,6 +374,7 @@
           };
         };
       };
+
       services.gnome.gnome-keyring.enable = true;
       security.polkit.enable = true;
     };
