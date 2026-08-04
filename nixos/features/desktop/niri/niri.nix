@@ -5,12 +5,16 @@
     {
       environment.systemPackages = with pkgs; [
         xwayland-satellite # xwayland support
+
+        # GNOME GTK stuff (why does WM tend to use gtks stuff grrr)
         nemo-with-extensions
         nautilus
         nwg-look
         adw-gtk3
-        kdePackages.qt6ct
         dconf-editor
+
+        # KDE things to keep even if kde is not installed
+        kdePackages.qt6ct
       ];
       environment.variables = {
         QT_QPA_PLATFORMTHEME = "qt6ct";

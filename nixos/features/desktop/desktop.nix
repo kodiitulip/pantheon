@@ -17,10 +17,18 @@
       security.rtkit.enable = true;
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
       environment.systemPackages = with pkgs; [
-        rar
         kdePackages.partitionmanager
         vlc
         pwvucontrol
+
+        # CLI File Archivers
+        zip
+        libarchive
+        # _7zip-zstd
+
+        # GUI File Archivers
+        kdePackages.ark
+        file-roller
       ];
     };
 }
