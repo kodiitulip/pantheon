@@ -77,6 +77,13 @@
 
             def --env --wrapped clear [...rest: string] { clear ...$rest; print (greeter)}
 
+            def --env --wrapped blkid [...rest: string] {
+              sudo blkid ...$rest
+              | lines
+              | parse -r '^(?<DEV>\S+):(?:\s+LABEL="(?<LABEL>\S+)")?\s+UUID="(?<UUID>\S+)"(?:\s+UUID_SUB="(?<UUID_SUB>\S+)")?(?:\s+BLOCK_SIZE="(?<BLOCK_SIZE>\S+)")?\sTYPE="(?<TYPE>\S+)"(?:\s+PARTLABEL="(?<PARTLABEL>\S+)")?(?:\s+PARTUUID="(?<PARTUUID>\S*)")?'
+              | sort-by BLOCK_SIZE
+            }
+
             def ztls [] {
               sudo zerotier-cli listnetworks | str replace -m -r -a '200 listnetworks ' "" | lines | skip 1 | split column ' ' 'id' 'name' 'mac' 'status' 'type' 'dev' 'ip'
             }
