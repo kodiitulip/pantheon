@@ -37,7 +37,6 @@
             lg = "lazygit";
             reload = "exec nu";
             gw = "./gradlew";
-            c = "clear";
             cr = "cargo run";
             crq = "cr --quiet";
             cb = "cargo build";
@@ -75,10 +74,11 @@
               $"\n  (ansi black_bold)(ansi {bg: black})(ansi "#5BCFFA") Ｈ(ansi "#F5ABB9")ｅ(ansi white)ｌ(ansi "#F5ABB9")ｌ(ansi "#5BCFFA")ｏ　(ansi "#5BCFFA")Ｋ(ansi "#F5ABB9")ｏ(ansi white)ｄ(ansi "#F5ABB9")ｉ(ansi "#5BCFFA")ｅ (ansi "#5BCFFA") (ansi "#F5ABB9") (ansi {fg: black, bg: none})(ansi rst)"
             }
 
-            def --env --wrapped clear [...rest: string] { clear ...$rest; print (greeter)}
+            def --env --wrapped clear [...rest: string] { ^clear ...$rest; print (greeter)}
+            alias c = clear
 
             def --env --wrapped blkid [...rest: string] {
-              sudo blkid ...$rest
+              sudo ^blkid ...$rest
               | lines
               | parse -r '^(?<DEV>\S+):(?:\s+LABEL="(?<LABEL>\S+)")?\s+UUID="(?<UUID>\S+)"(?:\s+UUID_SUB="(?<UUID_SUB>\S+)")?(?:\s+BLOCK_SIZE="(?<BLOCK_SIZE>\S+)")?\sTYPE="(?<TYPE>\S+)"(?:\s+PARTLABEL="(?<PARTLABEL>\S+)")?(?:\s+PARTUUID="(?<PARTUUID>\S*)")?'
               | sort-by BLOCK_SIZE
