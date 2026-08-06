@@ -16,8 +16,10 @@
         # KDE things to keep even if kde is not installed
         kdePackages.qt6ct
       ];
+      services.dbus.packages = with pkgs; [ nautilus ];
       environment.variables = {
         QT_QPA_PLATFORMTHEME = "qt6ct";
+        GTK_IM_MODULE = "simple";
       };
       xdg = {
         portal = {
