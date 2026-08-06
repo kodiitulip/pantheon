@@ -38,7 +38,7 @@
               "wheel"
               "uinput"
             ]
-            ++ (lib.mkIf (config.hardware.ic2.enable) [ "i2c" ]);
+            ++ (lib.optionals (config.hardware.i2c.enable) [ "i2c" ]);
             initialPassword = name;
             shell = pkgs.nushell;
           };
