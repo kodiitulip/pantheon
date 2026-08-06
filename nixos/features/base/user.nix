@@ -37,7 +37,8 @@
               "networkmanager"
               "wheel"
               "uinput"
-            ];
+            ]
+            ++ (lib.mkIf (config.hardware.ic2.enable) [ "i2c" ]);
             initialPassword = name;
             shell = pkgs.nushell;
           };

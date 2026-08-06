@@ -20,6 +20,8 @@
         kdePackages.partitionmanager
         vlc
         pwvucontrol
+        ddcutil
+        libnotify
 
         # CLI File Archivers
         zip
@@ -30,5 +32,6 @@
         kdePackages.ark
         file-roller
       ];
+      hardware.i2c.enable = true;
     };
 }
