@@ -64,6 +64,7 @@
                 on
                 width 2
                 inactive-color "${self.theme.rose-pine-dark.base03}"
+                active-color "${self.theme.rose-pine-dark.base07}"
                 urgent-color "${self.theme.rose-pine-dark.base06}"
               }
             }
@@ -71,11 +72,11 @@
               match is-window-cast-target=true
               border {
                 active-color "${self.theme.rose-pine-dark.base08}"
-                inactive-color "${self.theme.rose-pine-dark.base08}"
+                inactive-color "${self.theme.rose-pine-dark.base0F}"
               }
               tab-indicator {
                 active-color "${self.theme.rose-pine-dark.base08}"
-                inactive-color "${self.theme.rose-pine-dark.base08}"
+                inactive-color "${self.theme.rose-pine-dark.base0F}"
               }
             }
             overview {
