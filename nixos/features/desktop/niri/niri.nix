@@ -267,6 +267,8 @@
             "Mod+Alt+F11".action = "set-dynamic-cast-monitor";
             "Mod+Shift+F11".action = "clear-dynamic-cast-target";
 
+            "Mod+Shift+Slash".action = "show-hotkey-overlay";
+
             "Mod+C".action = "center-column";
             "Mod+Ctrl+C".action = "center-visible-columns";
             "Mod+S".action = "toggle-window-floating";
