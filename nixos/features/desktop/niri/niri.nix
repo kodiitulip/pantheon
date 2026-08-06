@@ -8,7 +8,6 @@
 
         # GNOME GTK stuff (why does WM tend to use gtks stuff grrr)
         nemo-with-extensions
-        nautilus
         nwg-look
         adw-gtk3
         dconf-editor
@@ -34,7 +33,6 @@
           "application/x-gnome-saved-search" = [ "nemo.desktop" ];
         };
       };
-
       services.gvfs.enable = true;
 
       programs.niri.enable = true;
@@ -259,10 +257,15 @@
             "Mod+Shift+R".action = "switch-preset-column-width-back";
             "Mod+Ctrl+Shift+R".action = "switch-preset-window-height";
             "Mod+Ctrl+R".action = "reset-window-height";
-            "Mod+F".action = "fullscreen-window";
-            "Mod+Shift+F".action = "maximize-column";
-            "Ctrl+Alt+F".action = "maximize-window-to-edges";
+            "Mod+F".action = "maximize-column";
+            "Mod+Shift+F".action = "fullscreen-window";
             "Mod+Ctrl+F".action = "expand-column-to-available-width";
+            "Mod+Alt+F".action = "toggle-windowed-fullscreen";
+            "Ctrl+Alt+F".action = "maximize-window-to-edges";
+
+            "Mod+F11".action = "set-dynamic-cast-window";
+            "Mod+Alt+F11".action = "set-dynamic-cast-monitor";
+            "Mod+Shift+F11".action = "clear-dynamic-cast-target";
 
             "Mod+C".action = "center-column";
             "Mod+Ctrl+C".action = "center-visible-columns";
@@ -387,7 +390,19 @@
               parameters.allow-inhibiting = false;
               action = "toggle-keyboard-shortcuts-inhibit";
             };
+
             "Mod+Return".spawn = [ "kitty" ];
+            "Mod+Shift+Return".spawn = [
+              "kitty"
+              "--class"
+              "dropdown-kitty"
+            ];
+            "Mod+V".spawn = [
+              "noctalia"
+              "msg"
+              "panel-toggle"
+              "clipboard"
+            ];
             # nixfmt:enable
           };
         };
