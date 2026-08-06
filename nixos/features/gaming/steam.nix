@@ -20,6 +20,8 @@
           proton-ge-bin
         ];
       };
+      programs.gamescope.enable = true;
+
       hjem.users.${config.preferences.user.name}.packages = with pkgs; [
         steam-art-manager
         protonup-qt
