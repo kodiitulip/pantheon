@@ -12,6 +12,7 @@
         zed-editor
         easyeffects
         selfpkgs.zen
+        unzip
         r2modman
         (discord.override {
           withVencord = true;
@@ -19,6 +20,7 @@
         })
         stremio-linux-shell
         prismlauncher
+        croc
       ];
     };
 }

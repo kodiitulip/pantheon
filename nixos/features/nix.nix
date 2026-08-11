@@ -1,6 +1,11 @@
 {
   flake.nixosModules.nix =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     {
       programs = {
         direnv = {
@@ -23,7 +28,7 @@
         };
         optimise.automatic = true;
       };
-      nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.allowUnfree = lib.mkForce true;
       hjem.users.${config.preferences.user.name} = {
         xdg.config.files."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv.toml" {
           global = {

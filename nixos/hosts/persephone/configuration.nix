@@ -5,7 +5,7 @@
   };
 
   flake.nixosModules.persephone =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       imports = with self.nixosModules; [
         base
@@ -37,6 +37,7 @@
         name = "kodie";
         face = ./avatar.png;
       };
+      services.displayManager.defaultSession = lib.mkForce "niri";
 
       programs = {
         firefox.enable = true;

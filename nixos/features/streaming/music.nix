@@ -17,16 +17,20 @@
         enable = false;
         enabledExtensions = with spicePkgs.extensions; [
           adblockify
-          hidePodcasts
           shuffle
-          keyboardShortcut
-          spicyLyrics
+          history
+          allOfArtist
+          {
+            src = pkgs.fetchFromGitHub {
+              owner = "ohitstom";
+              repo = "spicetify-extensions";
+              rev = "3cbfae12b79871fa0b79b7a9a0ef79dcce18875b";
+              hash = "sha256-1fPCUcaTTmxGWmiPfq6mJDzMJ85IK1RovMOfCp2Jfew=";
+            };
+            name = "pixelatedImages/pixelatedImages.js";
+          }
         ];
-        theme = spicePkgs.themes.text // {
-          additionalCss = ''
-            --font-family: 'Fira Code', monospace;
-          '';
-        };
+        theme = spicePkgs.themes.text;
         colorScheme = "RosePineMoon";
       };
     };
