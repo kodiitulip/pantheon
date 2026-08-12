@@ -21,10 +21,27 @@
             push.autoSetupRemote = true;
             pull.rebase = true;
             init.defaultBranch = "main";
-            url."https://github.com/".insteadOf = [
-              "gh:"
-              "github:"
-            ];
+            url = {
+              "https://github.com/".insteadOf = [
+                "gh:"
+                "github:"
+              ];
+              "https://github.com/cafundogames/".insteadOf = [
+                "cg:"
+                "cafundo:"
+                "cafundogames:"
+              ];
+              "https://github.com/kodiitulip/".insteadOf = [
+                "kt:"
+                "kodii:"
+                "kodiitulip:"
+              ];
+              "https://github.com/ramosdetrigo/".insteadOf = [
+                "ju:"
+                "ramos:"
+                "ramosdetrigo:"
+              ];
+            };
           };
         };
       };
