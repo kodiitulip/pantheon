@@ -47,7 +47,17 @@
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = false;
+        settings = {
+          General = {
+            Privacy = "device";
+            JustWorksRepairing = "always";
+            Class = "0x000100";
+            FastConnectable = true;
+            Experimental = true;
+          };
+        };
       };
+      hardware.xpadneo.enable = true;
 
       boot.kernelModules = [ "uinput" ];
 

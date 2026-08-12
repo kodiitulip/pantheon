@@ -17,12 +17,10 @@
     {
       environment.systemPackages = [ pkgs.kitty ];
       fonts.packages = with pkgs; [
-        nerd-fonts.fira-code
         nerd-fonts.caskaydia-cove
-        # nerd-fonts.symbols-only
+        nerd-fonts.symbols-only
         monocraft
         minecraftia
-        miracode
       ];
       hjem.users.${config.preferences.user.name}.rum.programs.kitty = {
         enable = true;
@@ -62,34 +60,34 @@
             "ctrl+shift+t new_tab"
           ];
 
-          # symbol_map = [
-          #   # "Nerd Fonts - Pomicons"
-          #   "U+E000-U+E00D Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Powerline"
-          #   "U+e0a0-U+e0a2,U+e0b0-U+e0b3 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Powerline Extra"
-          #   "U+e0a3-U+e0a3,U+e0b4-U+e0c8,U+e0cc-U+e0d2,U+e0d4-U+e0d4 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Symbols original"
-          #   "U+e5fa-U+e62b Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Devicons"
-          #   "U+e700-U+e7c5 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Font awesome"
-          #   "U+f000-U+f2e0 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Font awesome extension"
-          #   "U+e200-U+e2a9 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Octicons"
-          #   "U+f400-U+f4a8,U+2665-U+2665,U+26A1-U+26A1,U+f27c-U+f27c Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Font Linux"
-          #   "U+F300-U+F313 Symbols Nerd Font Mono"
-          #   #  Nerd Fonts - Font Power Symbols"
-          #   "U+23fb-U+23fe,U+2b58-U+2b58 Symbols Nerd Font Mono"
-          #   #  "Nerd Fonts - Material Design Icons"
-          #   "U+f500-U+fd46 Symbols Nerd Font Mono"
-          #   # "Nerd Fonts - Weather Icons"
-          #   "U+e300-U+e3eb Symbols Nerd Font Mono"
-          #   # Misc Code Point Fixes
-          #   "U+21B5,U+25B8,U+2605,U+2630,U+2632,U+2714,U+E0A3,U+E615,U+E62B Symbols Nerd Font Mono"
-          # ];
+          symbol_map = [
+            # "Nerd Fonts - Pomicons"
+            "U+E000-U+E00D Symbols Nerd Font Mono"
+            # "Nerd Fonts - Powerline"
+            "U+e0a0-U+e0a2,U+e0b0-U+e0b3 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Powerline Extra"
+            "U+e0a3-U+e0a3,U+e0b4-U+e0c8,U+e0cc-U+e0d2,U+e0d4-U+e0d4 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Symbols original"
+            "U+e5fa-U+e62b Symbols Nerd Font Mono"
+            # "Nerd Fonts - Devicons"
+            "U+e700-U+e7c5 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Font awesome"
+            "U+f000-U+f2e0 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Font awesome extension"
+            "U+e200-U+e2a9 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Octicons"
+            "U+f400-U+f4a8,U+2665-U+2665,U+26A1-U+26A1,U+f27c-U+f27c Symbols Nerd Font Mono"
+            # "Nerd Fonts - Font Linux"
+            "U+F300-U+F313 Symbols Nerd Font Mono"
+            #  Nerd Fonts - Font Power Symbols"
+            "U+23fb-U+23fe,U+2b58-U+2b58 Symbols Nerd Font Mono"
+            #  "Nerd Fonts - Material Design Icons"
+            "U+f500-U+fd46 Symbols Nerd Font Mono"
+            # "Nerd Fonts - Weather Icons"
+            "U+e300-U+e3eb Symbols Nerd Font Mono"
+            # Misc Code Point Fixes
+            "U+21B5,U+25B8,U+2605,U+2630,U+2632,U+2714,U+E0A3,U+E615,U+E62B Symbols Nerd Font Mono"
+          ];
         };
         theme = {
           dark = kittyKeyValue.generate "dark-theme.auto.conf" {
