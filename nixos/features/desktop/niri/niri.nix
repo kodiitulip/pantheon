@@ -6,7 +6,7 @@
       environment.systemPackages = with pkgs; [
         xwayland-satellite # xwayland support
 
-        # GNOME GTK stuff (why does WM tend to use gtks stuff grrr)
+        # GNOME GTK stuff
         nemo-with-extensions
         nwg-look
         adw-gtk3
@@ -264,12 +264,15 @@
             "Mod+Ctrl+F".action = "expand-column-to-available-width";
             "Mod+Alt+F".action = "toggle-windowed-fullscreen";
             "Ctrl+Alt+F".action = "maximize-window-to-edges";
+            "Mod+P".spawn = [
+              "nu"
+              "-c"
+              "wl-mirror (niri msg --json focused-output | from json | get name)"
+            ];
 
             "Mod+F11".action = "set-dynamic-cast-window";
             "Mod+Alt+F11".action = "set-dynamic-cast-monitor";
             "Mod+Shift+F11".action = "clear-dynamic-cast-target";
-
-            "Mod+Shift+Slash".action = "show-hotkey-overlay";
 
             "Mod+C".action = "center-column";
             "Mod+Ctrl+C".action = "center-visible-columns";

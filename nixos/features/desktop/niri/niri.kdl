@@ -27,7 +27,6 @@ gestures {
         max-speed 1500
     }
     hot-corners {
-        off
         top-left
     }
 }
@@ -104,4 +103,9 @@ output "HDMI-A-1" {
     position x=0 y=0
     focus-at-startup
     mode "1600x900@75.000"
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }

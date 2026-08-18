@@ -3,23 +3,25 @@
   flake.nixosModules.persephone =
     { pkgs, config, ... }:
     let
-      selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
+      pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
     in
     {
-      hjem.users.${config.preferences.user.name}.packages = with pkgs; [
-        kdePackages.kate
+      environment.systemPackages = with pkgs; [
         neovim
-        zed-editor
-        easyeffects
-        selfpkgs.zen
         unzip
+        easyeffects
+        zed-editor
+        pkgs'.zen
+        firefoxpwa
+      ];
+      hjem.users.${config.preferences.user.name}.packages = with pkgs; [
+        godot
         r2modman
         (discord.override {
           withVencord = true;
           withOpenASAR = true;
         })
         stremio-linux-shell
-        prismlauncher
         croc
       ];
     };

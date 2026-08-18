@@ -5,7 +5,7 @@
   };
 
   flake.nixosModules.persephone =
-    { lib, pkgs, ... }:
+    { lib, ... }:
     {
       imports = with self.nixosModules; [
         base
@@ -62,8 +62,6 @@
       boot.kernelModules = [ "uinput" ];
 
       nixpkgs.config.allowUnfree = true;
-
-      environment.systemPackages = with pkgs; [ vim ];
 
       system.stateVersion = "26.05"; # WARN: No changing wili nilly
     };
