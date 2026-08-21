@@ -6,6 +6,7 @@
         (prismlauncher.override {
           additionalPrograms = [
             ffmpeg
+            yt-dlp
             vlc
           ];
           jdks = [
