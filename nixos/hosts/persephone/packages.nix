@@ -21,6 +21,7 @@
           withVencord = true;
           withOpenASAR = true;
         })
+        pkgs'.root
         stremio-linux-shell
         croc
       ];

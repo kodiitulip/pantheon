@@ -23,7 +23,7 @@
             substituteInPlace $out/share/applications/root.desktop \
               --replace-fail 'Exec=Root' 'Exec=root'
             substituteInPlace $out/share/applications/root.desktop \
-              --replace-fail 'Icon=Root' 'Icon=root'
+              --replace-fail 'Icon=Root' 'Icon=$out/share/icons/hicolor/512x512/apps/root.png'
           '';
         };
     };

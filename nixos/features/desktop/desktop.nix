@@ -25,8 +25,9 @@
 
         # CLI File Archivers
         zip
+        unzip
         libarchive
-        # _7zip-zstd
+        unrar-free
 
         # GUI File Archivers
         kdePackages.ark

@@ -15,7 +15,7 @@
         git
 
         desktop
-        kde
+        # kde
         niri
 
         gaming
