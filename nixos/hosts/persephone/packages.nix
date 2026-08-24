@@ -11,8 +11,9 @@
         unzip
         easyeffects
         zed-editor
-        pkgs'.zen
         firefoxpwa
+        pkgs'.zen
+        pkgs'.root
       ];
       hjem.users.${config.preferences.user.name}.packages = with pkgs; [
         godot
@@ -21,7 +22,6 @@
           withVencord = true;
           withOpenASAR = true;
         })
-        pkgs'.root
         stremio-linux-shell
         croc
       ];

@@ -25,6 +25,10 @@
             "nix-command"
             "flakes"
           ];
+          trusted-users = [
+            "kodie"
+            config.preferences.user.name
+          ];
         };
         optimise.automatic = true;
       };

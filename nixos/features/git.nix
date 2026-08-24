@@ -41,6 +41,11 @@
                 "ramos:"
                 "ramosdetrigo:"
               ];
+              "https://github.com/ca-smd/".insteadOf = [
+                "ca:"
+                "ca-smd:"
+                "casmd:"
+              ];
             };
           };
         };

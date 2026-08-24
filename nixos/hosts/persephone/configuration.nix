@@ -5,7 +5,7 @@
   };
 
   flake.nixosModules.persephone =
-    { lib, ... }:
+    { lib, config, ... }:
     {
       imports = with self.nixosModules; [
         base
@@ -37,6 +37,19 @@
         name = "kodie";
         face = ./avatar.png;
       };
+
+      hjem.users.${config.preferences.user.name}.rum.programs.git = {
+        enable = true;
+        settings.user = {
+          email = "kodii.tulip@proton.me";
+          name = "kodiitulip";
+        };
+        ignore = ''
+          .direnv
+          result*
+        '';
+      };
+
       services.displayManager.defaultSession = lib.mkForce "niri";
 
       programs = {
