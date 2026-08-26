@@ -11,7 +11,10 @@
         nwg-look
         adw-gtk3
         dconf-editor
-        image-roll
+        eog
+
+        btop
+        neohtop
 
         # KDE things to keep even if kde is not installed
         kdePackages.qt6ct

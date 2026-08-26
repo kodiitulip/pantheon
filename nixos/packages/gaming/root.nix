@@ -18,12 +18,12 @@
           inherit pname version src;
           extraPkgs = pkgs: with pkgs; [ noto-fonts-color-emoji ];
           extraInstallCommands = ''
-            install -m 444 -D ${contents}/Root.desktop $out/share/applications/root.desktop
-            install -m 444 -D ${contents}/Root.png $out/share/icons/hicolor/512x512/apps/root.png
+            install -m 644 -D ${contents}/Root.desktop $out/share/applications/root.desktop
+            install -m 644 -D ${contents}/Root.png $out/share/icons/hicolor/512x512/apps/root.png
             substituteInPlace $out/share/applications/root.desktop \
               --replace-fail 'Exec=Root' 'Exec=root'
             substituteInPlace $out/share/applications/root.desktop \
-              --replace-fail 'Icon=Root' 'Icon=$out/share/icons/hicolor/512x512/apps/root.png'
+              --replace-fail 'Icon=Root' 'Icon=root'
           '';
         };
     };
