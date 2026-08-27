@@ -8,6 +8,7 @@
             ffmpeg
             yt-dlp
             vlc
+            yad
           ];
           jdks = [
             graalvmPackages.graalvm-ce
