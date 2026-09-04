@@ -19,15 +19,9 @@
           adblockify
           shuffle
           history
-          allOfArtist
           {
-            src = pkgs.fetchFromGitHub {
-              owner = "ohitstom";
-              repo = "spicetify-extensions";
-              rev = "3cbfae12b79871fa0b79b7a9a0ef79dcce18875b";
-              hash = "sha256-1fPCUcaTTmxGWmiPfq6mJDzMJ85IK1RovMOfCp2Jfew=";
-            };
-            name = "pixelatedImages/pixelatedImages.js";
+            src = ./tuna-spicetify;
+            name = "tunaSpicetify.js";
           }
         ];
         theme = spicePkgs.themes.text;

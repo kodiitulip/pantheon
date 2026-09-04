@@ -11,7 +11,6 @@
         systemPackages = with pkgs.nushellPlugins; [
           query
           formats
-          semver
         ];
         variables = {
           EDITOR = "nvim";
