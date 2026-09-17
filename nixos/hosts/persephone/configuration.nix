@@ -5,7 +5,7 @@
   };
 
   flake.nixosModules.persephone =
-    { lib, config, ... }:
+    { config, ... }:
     {
       imports = with self.nixosModules; [
         base
@@ -49,8 +49,6 @@
           result*
         '';
       };
-
-      services.displayManager.defaultSession = lib.mkForce "niri";
 
       programs = {
         firefox.enable = true;

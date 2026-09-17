@@ -7,10 +7,10 @@
           inherit (pkgs) fetchurl;
           inherit (pkgs.appimageTools) wrapType2 extract;
           pname = "root";
-          version = "0.9.127";
+          version = "0.9.130";
           src = fetchurl {
             url = "https://installer.rootapp.com/installer/Linux/X64/Root.AppImage";
-            hash = "sha256-LFTZZC9qhHdRgQXzNa6j74hNn8oxjIR/J+bTM0DB3Js=";
+            hash = "sha256-HaMUPmonHSKx71uN4Bm6ujkBPmfV/rTIKSydEpSjxtA=";
           };
           contents = extract { inherit pname version src; };
         in

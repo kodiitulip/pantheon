@@ -1,7 +1,7 @@
 {
   flake.nixosModules.persephone = _: {
     networking.hosts = {
-      "172.24.145.167" = [ "julia-servers" ];
+      "172.24.153.233" = [ "caju" ];
       "172.24.97.165" = [ "julia" ];
     };
 
@@ -11,8 +11,13 @@
         443
         3000
         8080
-        25565
-        35565
+        4321
+      ];
+      allowedTCPPortRanges = [
+        {
+          from = 25565;
+          to = 35565;
+        }
       ];
       allowedUDPPorts = [ ];
     };
