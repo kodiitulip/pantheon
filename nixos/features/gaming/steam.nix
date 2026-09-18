@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   flake.nixosModules.gaming =
     { pkgs, config, ... }:
@@ -6,13 +5,12 @@
       username = config.preferences.user.name;
     in
     {
-      nixpkgs.overlays = [ inputs.millennium.overlays.default ];
       programs = {
         gamemode.enable = true;
         gamescope.enable = true;
         steam = {
           enable = true;
-          package = pkgs.millennium-steam.override {
+          package = pkgs.steam.override {
             extraPkgs =
               pkgs': with pkgs'; [
                 libXcursor
