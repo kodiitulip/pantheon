@@ -11,10 +11,9 @@
             yad
           ];
           jdks = [
-            graalvmPackages.graalvm-ce
-            zulu17
-            zulu21
-            temurin-bin-21
+            temurin-jre-bin-17
+            temurin-jre-bin-21
+            temurin-jre-bin-25
           ];
         })
       ];
