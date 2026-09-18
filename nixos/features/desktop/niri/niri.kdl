@@ -53,6 +53,11 @@ window-rule {
     default-column-width { proportion 0.5; }
 }
 window-rule {
+    match app-id="full-kitty"
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+window-rule {
     match app-id="dropdown-kitty"
     open-floating true
     default-floating-position x=0 y=0 relative-to="top"

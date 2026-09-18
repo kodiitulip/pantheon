@@ -407,6 +407,11 @@
               "--class"
               "dropdown-kitty"
             ];
+            "Mod+Alt+Return".spawn = [
+              "kitty"
+              "--class"
+              "full-kitty"
+            ];
             "Mod+V".spawn = [
               "noctalia"
               "msg"
