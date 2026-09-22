@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.nixosModules.gaming =
     { pkgs, config, ... }:
@@ -5,6 +6,7 @@
       username = config.preferences.user.name;
     in
     {
+      nixpkgs.overlays = [ inputs.proton-cachyos.overlays.default ];
       programs = {
         gamemode.enable = true;
         gamescope.enable = true;
@@ -33,7 +35,11 @@
             gamescope
             hidapi
           ];
-          extraCompatPackages = [ pkgs.proton-ge-bin ];
+          extraCompatPackages = with pkgs; [
+            proton-ge-bin
+            proton-cachyos
+            proton-cachyos-v3
+          ];
         };
       };
 

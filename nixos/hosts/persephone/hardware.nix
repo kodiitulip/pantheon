@@ -2,6 +2,7 @@
 {
   flake.nixosModules.persephone =
     {
+      pkgs,
       config,
       lib,
       modulesPath,
@@ -21,6 +22,7 @@
           "sd_mod"
         ];
         initrd.kernelModules = [ ];
+        kernelPackages = pkgs.linuxKernel.packages.linux-zen;
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
       };

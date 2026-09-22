@@ -20,6 +20,10 @@
       url = "github:PierreBorine/vintagestory-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    proton-cachyos = {
+      url = "github:Daaboulex/proton-cachyos-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
