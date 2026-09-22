@@ -2,9 +2,12 @@
 {
   flake.nixosModules.niri =
     { pkgs, config, ... }:
+    let
+      pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
+    in
     {
       environment.systemPackages = with pkgs; [
-        xwayland-satellite # xwayland support
+        pkgs'.xwayland-satellite # xwayland support
 
         # GNOME GTK stuff
         nemo-with-extensions
@@ -30,7 +33,7 @@
           extraPortals = [
             pkgs.xdg-desktop-portal-gtk
             pkgs.xdg-desktop-portal-gnome
-          ]; # Fixes OpenURI and cursor themes in flatpaks
+          ];
         };
         mime.defaultApplications = {
           "inode/directory" = [ "nemo.desktop" ];

@@ -10,7 +10,7 @@
           version = "0.9.130";
           src = fetchurl {
             url = "https://installer.rootapp.com/installer/Linux/X64/Root.AppImage";
-            hash = "sha256-HaMUPmonHSKx71uN4Bm6ujkBPmfV/rTIKSydEpSjxtA=";
+            hash = "sha256-HuhB1WhUDnjH4E/SyNXSIFPkJL1eTTLHwU+eA82Cp78=";
           };
           contents = extract { inherit pname version src; };
         in
