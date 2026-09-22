@@ -46,6 +46,7 @@
           options = [
             "defaults"
             "compress=zstd"
+            "nofail"
           ];
         };
       };

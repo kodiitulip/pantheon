@@ -1,11 +1,9 @@
 {
   flake.nixosModules.nix =
-    {
-      lib,
-      pkgs,
-      config,
-      ...
-    }:
+    { pkgs, config, ... }:
+    let
+      username = config.preferences.user.name;
+    in
     {
       programs = {
         direnv = {
@@ -16,6 +14,7 @@
           nix-direnv.enable = true;
         };
         nix-ld.enable = true;
+        nix-index.enable = true;
       };
 
       nix = {
@@ -27,17 +26,19 @@
           ];
           trusted-users = [
             "kodie"
-            config.preferences.user.name
+            username
           ];
         };
         optimise.automatic = true;
       };
-      nixpkgs.config.allowUnfree = lib.mkForce true;
-      hjem.users.${config.preferences.user.name} = {
+      nixpkgs.config.allowUnfree = true;
+      hjem.users.${username} = {
         xdg.config.files."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv.toml" {
           global = {
-            warn_timeout = "0s";
+            warn_timeout = "-1s";
             hide_env_diff = true;
+            load_dotenv = true;
+            strict_env = true;
           };
         };
         rum.programs.nix-your-shell = {
@@ -48,10 +49,6 @@
 
       programs.nh = {
         enable = true;
-        clean = {
-          enable = true;
-          extraArgs = "--keep 3 --keep-since 3d";
-        };
         flake = "/home/kodie/pantheon";
       };
 

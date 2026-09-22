@@ -53,6 +53,7 @@
       hjem.users.${username}.packages = with pkgs; [
         steam-art-manager
         protonup-qt
+        hydralauncher
       ];
     };
 }
