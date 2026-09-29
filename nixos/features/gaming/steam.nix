@@ -1,8 +1,9 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
   flake.nixosModules.gaming =
     { pkgs, config, ... }:
     let
+      pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
       username = config.preferences.user.name;
     in
     {
@@ -57,7 +58,7 @@
         steam-tui
       ];
       hjem.users.${username}.packages = with pkgs; [
-        steam-art-manager
+        pkgs'.steam-art-manager
         protonup-qt
         hydralauncher
       ];

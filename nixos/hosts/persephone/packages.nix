@@ -12,17 +12,18 @@
         easyeffects
         zed-editor
         firefoxpwa
+        nurl
+        godot
         pkgs'.zen
-        pkgs'.root
       ];
       hjem.users.${config.preferences.user.name}.packages = with pkgs; [
-        godot
-        r2modman
+        pkgs'.root
         (discord.override {
           withVencord = true;
           withOpenASAR = true;
         })
         stremio-linux-shell
+        r2modman
         croc
       ];
     };
