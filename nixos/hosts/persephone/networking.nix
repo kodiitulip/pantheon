@@ -1,8 +1,14 @@
 {
   flake.nixosModules.persephone = _: {
     networking.hosts = {
-      "172.24.153.233" = [ "caju" ];
-      "172.24.97.165" = [ "julia" ];
+      "172.24.153.233" = [
+        "caju"
+        "caju.server"
+      ];
+      "172.24.138.11" = [
+        "julia"
+        "julia.server"
+      ];
     };
 
     networking.firewall = {

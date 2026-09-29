@@ -26,6 +26,7 @@
                 stdenv.cc.cc.lib # Provides libstdc++.so.6
                 libkrb5
                 keyutils
+                nemo
               ];
           };
           extest.enable = true;
@@ -35,6 +36,7 @@
           extraPackages = with pkgs; [
             gamescope
             hidapi
+            nemo
           ];
           extraCompatPackages = with pkgs; [
             proton-ge-bin
