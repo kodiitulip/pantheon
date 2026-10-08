@@ -312,6 +312,7 @@
         "noctalia-greeter": "noctalia-greeter",
         "proton-cachyos": "proton-cachyos",
         "spicetify-nix": "spicetify-nix",
+        "umbriel": "umbriel",
         "vintagestory-nix": "vintagestory-nix",
         "zen-browser": "zen-browser"
       }
@@ -377,6 +378,27 @@
         "type": "github"
       }
     },
+    "umbriel": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
+      },
+      "locked": {
+        "lastModified": 1791311361,
+        "narHash": "sha256-YwWujqwEAN2uw+zYeu6G8DQlEq4WjZhTAFFAjRQuALk=",
+        "ref": "refs/heads/main",
+        "rev": "9091e3feb75473f38a6cc300ea99f03ad0b2b6e8",
+        "revCount": 1178,
+        "type": "git",
+        "url": "https://github.com/noctalia-dev/umbriel"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/noctalia-dev/umbriel"
+      }
+    },
     "vintagestory-nix": {
       "inputs": {
         "nixpkgs": [
@@ -394,6 +416,27 @@
       "original": {
         "owner": "PierreBorine",
         "repo": "vintagestory-nix",
+        "type": "github"
+      }
+    },
+    "xdg-desktop-portal-umbriel": {
+      "inputs": {
+        "nixpkgs": [
+          "umbriel",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790459405,
+        "narHash": "sha256-xDnu9icpormkETOo8Vn2Qr7Jkrz9ZqRf/jOhqADeeyg=",
+        "owner": "noctalia-dev",
+        "repo": "xdg-desktop-portal-umbriel",
+        "rev": "d6bd72cabd83e3084fb2f2e24898d8ffa4a8c24f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "xdg-desktop-portal-umbriel",
         "type": "github"
       }
     },

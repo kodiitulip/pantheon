@@ -27,6 +27,7 @@
                 libkrb5
                 keyutils
                 nemo
+                libnotify
               ];
           };
           extest.enable = true;
@@ -37,6 +38,7 @@
             gamescope
             hidapi
             nemo
+            libnotify
           ];
           extraCompatPackages = with pkgs; [
             proton-ge-bin

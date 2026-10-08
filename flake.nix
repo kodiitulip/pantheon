@@ -29,6 +29,10 @@
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    umbriel = {
+      url = "git+https://github.com/noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
@@ -43,11 +47,13 @@
   outputs =
     inputs:
     let
-      inherit (inputs.nixpkgs) lib;
-      mkFlake = inputs.flake-parts.lib.mkFlake { inherit inputs; };
-      importModules = inputs.import-tree (i: i.filterNot (lib.hasInfix "flake.nix")) (
-        i: i.filterNot (lib.hasInfix "templates/")
-      ) (i: i ./.);
+      inherit (inputs) import-tree flake-parts;
+      inherit (inputs.nixpkgs.lib) hasInfix;
+
+      mkFlake = flake-parts.lib.mkFlake { inherit inputs; };
+      isFlake = i: i.filterNot (hasInfix "flake.nix");
+      isInTemplates = i: i.filterNot (hasInfix "templates/");
+      isDisabled = i: i.filterNot (hasInfix "disabled");
     in
-    mkFlake importModules;
+    mkFlake (import-tree isFlake isInTemplates isDisabled (i: i ./.));
 }

@@ -8,23 +8,24 @@
     {
       environment.systemPackages = with pkgs; [
         neovim
-        unzip
+        steelix
         easyeffects
         zed-editor
         firefoxpwa
         nurl
         godot
+        qbittorrent
+        croc
+
         pkgs'.zen
       ];
       hjem.users.${config.preferences.user.name}.packages = with pkgs; [
-        pkgs'.root
         (discord.override {
           withVencord = true;
           withOpenASAR = true;
         })
         stremio-linux-shell
         r2modman
-        croc
       ];
     };
 }
