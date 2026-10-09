@@ -6,7 +6,10 @@
       imports = [ inputs.noctalia-greeter.nixosModules.default ];
       hardware.i2c.enable = true;
       security = {
-        polkit.enable = true;
+        polkit = {
+          enable = true;
+          enablePkexecWrapper = true;
+        };
         rtkit.enable = true;
       };
       services = {
@@ -24,10 +27,6 @@
         };
         displayManager.noctalia-greeter = {
           enable = true;
-          cursorTheme = {
-            name = "BreezeX-RosePine-Linux";
-            package = pkgs.rose-pine-cursor;
-          };
           settings = {
             cursor.size = 24;
             keyboard = {
@@ -70,7 +69,7 @@
         dconf-editor
         eog
         btop
-        gparted-full
+        kdePackages.partitionmanager
         kdePackages.qt6ct
 
         vlc
