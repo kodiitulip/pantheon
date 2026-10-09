@@ -1,12 +1,20 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.desktop =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       imports = [ inputs.noctalia-greeter.nixosModules.default ];
+      hardware.i2c.enable = true;
+      security = {
+        polkit.enable = true;
+        rtkit.enable = true;
+      };
       services = {
         xserver.enable = true;
         pulseaudio.enable = false;
+        gvfs.enable = true;
+        gnome.gnome-keyring.enable = true;
+        dbus.packages = with pkgs; [ nautilus ];
         pipewire = {
           enable = true;
           alsa.enable = true;
@@ -14,24 +22,20 @@
           pulse.enable = true;
           jack.enable = true;
         };
-
         displayManager.noctalia-greeter = {
           enable = true;
-          greeter-args = "";
+          cursorTheme = {
+            name = "BreezeX-RosePine-Linux";
+            package = pkgs.rose-pine-cursor;
+          };
           settings = {
-            cursor = {
-              theme = "BreezeX-RosePine-Linux";
-              size = 24;
-              path = "${pkgs.rose-pine-cursor}/share/icons";
-            };
+            cursor.size = 24;
             keyboard = {
               layout = "br";
               variant = "nodeadkeys";
               options = "compose:rctrl";
               numlock = true;
             };
-            session.default = "niri";
-            user.default = config.preferences.user.name;
             auth.allow_empty_passwords = false;
             appearance = {
               hide_logo = true;
@@ -39,20 +43,36 @@
               scheme = "Synced";
               corner_radius_scale = 0.0;
               font_family = "Monocraft";
-              wallpaper = {
-                path = "color:${self.theme.rose-pine-dark.base00}";
-                fill_mode = "crop";
-                fill_color = self.theme.rose-pine-dark.base00;
-              };
             };
           };
         };
       };
-
-      security.rtkit.enable = true;
-      environment.sessionVariables.NIXOS_OZONE_WL = "1";
+      xdg = {
+        portal = {
+          enable = true;
+          extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+        };
+        mime.defaultApplications = {
+          "inode/directory" = [ "nemo.desktop" ];
+          "application/x-gnome-saved-search" = [ "nemo.desktop" ];
+        };
+      };
+      environment.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORMTHEME = "qt6ct";
+        GTK_IM_MODULE = "simple";
+      };
       environment.systemPackages = with pkgs; [
-        kdePackages.partitionmanager
+        # Misc Stuff
+        nemo-with-extensions
+        nwg-look
+        adw-gtk3
+        dconf-editor
+        eog
+        btop
+        gparted-full
+        kdePackages.qt6ct
+
         vlc
         pwvucontrol
         ddcutil
@@ -68,6 +88,5 @@
         peazip
         file-roller
       ];
-      hardware.i2c.enable = true;
     };
 }

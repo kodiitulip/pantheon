@@ -61,10 +61,13 @@
         steamcmd
         steam-tui
       ];
-      hjem.users.${username}.packages = with pkgs; [
-        pkgs'.steam-art-manager
-        protonup-qt
-        hydralauncher
-      ];
+      hjem.users.${username}.packages =
+        with pkgs;
+        with pkgs';
+        [
+          steam-art-manager
+          protonup-qt
+          hydralauncher
+        ];
     };
 }

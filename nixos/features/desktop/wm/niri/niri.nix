@@ -6,42 +6,15 @@
       pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
     in
     {
-      environment.systemPackages = with pkgs; [
-        pkgs'.xwayland-satellite # xwayland support
-
-        # GNOME GTK stuff
-        nemo-with-extensions
-        nwg-look
-        adw-gtk3
-        dconf-editor
-        eog
-
-        btop
-        neohtop
-
-        # KDE things to keep even if kde is not installed
-        kdePackages.qt6ct
+      environment.systemPackages =
+        with pkgs;
+        with pkgs';
+        [
+          xwayland-satellite # xwayland support
+        ];
+      xdg.portal.extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
       ];
-      services.dbus.packages = with pkgs; [ nautilus ];
-      environment.variables = {
-        QT_QPA_PLATFORMTHEME = "qt6ct";
-        GTK_IM_MODULE = "simple";
-      };
-      xdg = {
-        portal = {
-          enable = true;
-          extraPortals = [
-            pkgs.xdg-desktop-portal-gtk
-            pkgs.xdg-desktop-portal-gnome
-          ];
-        };
-        mime.defaultApplications = {
-          "inode/directory" = [ "nemo.desktop" ];
-          "application/x-gnome-saved-search" = [ "nemo.desktop" ];
-        };
-      };
-      services.gvfs.enable = true;
-
       programs.niri.enable = true;
       hjem.users.${config.preferences.user.name}.rum = {
         desktops.niri = {
@@ -426,7 +399,5 @@
         };
       };
 
-      services.gnome.gnome-keyring.enable = true;
-      security.polkit.enable = true;
     };
 }
