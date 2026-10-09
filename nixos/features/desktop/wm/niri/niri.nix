@@ -4,6 +4,7 @@
     { pkgs, config, ... }:
     let
       pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
+      username = config.preferences.user.name;
     in
     {
       environment.systemPackages =
@@ -16,53 +17,14 @@
         xdg-desktop-portal-gnome
       ];
       programs.niri.enable = true;
-      hjem.users.${config.preferences.user.name}.rum = {
+      hjem.users.${username}.rum = {
         desktops.niri = {
           enable = true;
           spawn-at-startup = [
             [ "noctalia" ]
           ];
-          config = builtins.readFile ./niri.kdl + ''
-            layout {
-              gaps 4
-              center-focused-column "never"
-              preset-column-widths {
-                proportion 0.25
-                proportion 0.33333
-                proportion 0.5
-                proportion 0.66667
-                proportion 0.75
-              }
-              preset-window-heights {
-                proportion 0.5
-                proportion 1.0
-              }
-              default-column-width { proportion 1.0; }
-              focus-ring { off; }
-              shadow { off; }
-              border {
-                on
-                width 2
-                inactive-color "${self.theme.rose-pine-dark.base03}"
-                active-color "${self.theme.rose-pine-dark.base07}"
-                urgent-color "${self.theme.rose-pine-dark.base06}"
-              }
-            }
-            window-rule {
-              match is-window-cast-target=true
-              border {
-                active-color "${self.theme.rose-pine-dark.base08}"
-                inactive-color "${self.theme.rose-pine-dark.base0F}"
-              }
-              tab-indicator {
-                active-color "${self.theme.rose-pine-dark.base08}"
-                inactive-color "${self.theme.rose-pine-dark.base0F}"
-              }
-            }
-            overview {
-              backdrop-color "${self.theme.rose-pine-dark.base00}"
-            }
-          '';
+          config = builtins.readFile ./niri.kdl;
+
           # nixfmt:disable
           binds = {
             "XF86AudioRaiseVolume".spawn = [
