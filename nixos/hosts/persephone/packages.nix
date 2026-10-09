@@ -11,7 +11,6 @@
         with pkgs';
         [
           neovim
-          steelix
           easyeffects
           zed-editor
           firefoxpwa
