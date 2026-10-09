@@ -37,7 +37,6 @@
               "networkmanager"
               "wheel"
               "uinput"
-              "greeter"
             ]
             ++ (lib.optionals (config.hardware.i2c.enable) [ "i2c" ]);
             initialPassword = name;
