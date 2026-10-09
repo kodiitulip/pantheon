@@ -49,12 +49,8 @@ layout {
   }
   default-column-width { proportion 1.0; }
   shadow { off; }
-  focus-ring {
-    width 1
-  }
-  border {
-    width 2
-  }
+  focus-ring { off; }
+  border { width 2; }
 }
 
 // ==================== LAYER RULES ==================== //
