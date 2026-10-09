@@ -1,7 +1,10 @@
 { inputs, ... }:
 {
   flake.nixosModules.desktop =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
+    let
+      username = config.preferences.user.name;
+    in
     {
       imports = [ inputs.noctalia-greeter.nixosModules.default ];
       hardware.i2c.enable = true;
@@ -27,6 +30,10 @@
         };
         displayManager.noctalia-greeter = {
           enable = true;
+          passwordless-sync-users = [
+            "kodie"
+            username
+          ];
           settings = {
             cursor.size = 24;
             keyboard = {

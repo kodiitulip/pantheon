@@ -30,6 +30,13 @@
             ;
         in
         lib.mkIf (name != "" && enable) {
+          environment.shells = with pkgs; [ nushell ];
+          programs.bash.interactiveShellInit = ''
+            if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
+              exec nu
+            fi
+          '';
+
           users.users.${name} = {
             isNormalUser = true;
             description = name;
@@ -40,7 +47,7 @@
             ]
             ++ (lib.optionals (config.hardware.i2c.enable) [ "i2c" ]);
             initialPassword = name;
-            shell = pkgs.nushell;
+            # shell = pkgs.nushell;
           };
           hjem.users.${name} = lib.mkIf enableHjemUser {
             enable = true;

@@ -2,6 +2,10 @@
 {
   flake.nixosModules.console =
     { pkgs, config, ... }:
+    let
+      inherit (pkgs.lib) getExe;
+      username = config.preferences.user.name;
+    in
     {
       environment.systemPackages = [ pkgs.kitty ];
       fonts.packages = with pkgs; [
@@ -10,11 +14,12 @@
         monocraft
         minecraftia
       ];
-      hjem.users.${config.preferences.user.name}.rum.programs.kitty = {
+      hjem.users.${username}.rum.programs.kitty = {
         enable = true;
         settings = {
           include = "~/.config/kitty/themes/noctalia.conf";
           enable_audio_bell = "no";
+          shell = getExe pkgs.nushell;
 
           font_size = 10;
           font_family = "Monocraft";
