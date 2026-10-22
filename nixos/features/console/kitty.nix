@@ -20,6 +20,11 @@
           include = "~/.config/kitty/themes/noctalia.conf";
           enable_audio_bell = "no";
           shell = getExe pkgs.nushell;
+          background_opacity = 0.2;
+          background_blur = 3;
+          dynamic_background_opacity = "yes";
+          auto_reload_config = 0.1;
+          notify_on_cmd_finish = "unfocused 10 notify-bell";
 
           font_size = 10;
           font_family = "Monocraft";

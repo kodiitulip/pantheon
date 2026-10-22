@@ -3,7 +3,8 @@
   flake.nixosModules.persephone =
     { pkgs, config, ... }:
     let
-      pkgs' = self.packages.${pkgs.stdenv.hostPlatform.system};
+      system = pkgs.stdenv.hostPlatform.system;
+      pkgs' = self.packages.${system};
     in
     {
       environment.systemPackages =
