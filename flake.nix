@@ -21,6 +21,10 @@
       url = "github:PierreBorine/vintagestory-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprism = {
+      url = "github:hyprismteam/Hyprism?dir=Packaging/linux/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     proton-cachyos = {
       url = "github:Daaboulex/proton-cachyos-nix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.nixosModules.gaming =
     { pkgs, config, ... }:
@@ -16,6 +17,7 @@
             temurin-jre-bin-25
           ];
         })
+        inputs.hyprism.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
 }

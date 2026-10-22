@@ -21,13 +21,17 @@
           croc
           zen
         ];
-      hjem.users.${config.preferences.user.name}.packages = with pkgs; [
-        (discord.override {
-          withVencord = true;
-          withOpenASAR = true;
-        })
-        stremio-linux-shell
-        r2modman
-      ];
+      hjem.users.${config.preferences.user.name}.packages =
+        with pkgs;
+        with pkgs';
+        [
+          (discord.override {
+            withVencord = true;
+            withOpenASAR = true;
+          })
+          stremio-linux-shell
+          r2modman
+          packweave
+        ];
     };
 }

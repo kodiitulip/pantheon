@@ -20,7 +20,7 @@
           include = "~/.config/kitty/themes/noctalia.conf";
           enable_audio_bell = "no";
           shell = getExe pkgs.nushell;
-          background_opacity = 0.2;
+          background_opacity = 0.7;
           background_blur = 3;
           dynamic_background_opacity = "yes";
           auto_reload_config = 0.1;
