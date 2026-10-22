@@ -14,7 +14,7 @@
           obs-vkcapture
           obs-tuna
         ];
-        enableVirtualCamera = true;
+        enableVirtualCamera = false;
       };
     };
 }
