@@ -1,11 +1,11 @@
 {
   flake.nixosModules.console =
-    { lib, config, ... }:
+    { lib, ... }:
     {
-      hjem.users.${config.preferences.user.name}.rum.programs.starship = {
+      programs.starship = {
         enable = true;
-        integrations.nushell.enable = true;
-        transience.enable = true;
+        enableNushellIntegration = true;
+        enableBashIntegration = true;
         settings = {
           add_newline = true;
           command_timeout = 1000;
@@ -14,6 +14,7 @@
             "$sudo"
             "$username"
             "[](fg:overlay) "
+            "$shell"
             "$directory"
             "$git_branch"
             "$git_status"
@@ -80,6 +81,11 @@
             format = "[ $symbol]($style)";
             style = "bg:overlay fg:rose";
             symbol = "";
+          };
+          shell = {
+            disabled = false;
+            format = "[](fg:overlay)[  $indicator ]($style)[](fg:overlay) ";
+            style = "bg:overlay fg:rose";
           };
           git_branch = {
             format = "[ $symbol $branch ]($style)";

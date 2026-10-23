@@ -11,7 +11,6 @@
         with pkgs;
         with pkgs';
         [
-          neovim
           easyeffects
           zed-editor
           firefoxpwa
