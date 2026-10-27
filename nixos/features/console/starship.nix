@@ -57,7 +57,7 @@
           ];
           profiles.sudo_prompt = lib.concatStrings [
             "[](fg:overlay)[  ](bg:overlay fg:rose)[](fg:overlay) "
-            "[](fg:rose) "
+            "[](fg:rose)  "
           ];
           continuation_prompt = " [∙](bold fg:iris)   ";
           character = {
@@ -78,7 +78,7 @@
           };
           sudo = {
             disabled = false;
-            format = "[ $symbol]($style)";
+            format = "[ $symbol ]($style)";
             style = "bg:overlay fg:rose";
             symbol = "";
           };

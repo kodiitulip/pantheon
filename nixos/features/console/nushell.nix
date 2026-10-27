@@ -7,7 +7,7 @@
       ...
     }:
     {
-      environment.systemVariables = {
+      environment.sessionVariables = {
         NU_EXPERIMENTAL_OPTIONS = "native-clip";
         STARSHIP_LOG = "error";
         CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
@@ -18,15 +18,13 @@
           plugins = with pkgs.nushellPlugins; [
             formats
             query
-            highlight
-            units
             desktop_notifications
           ];
           interactiveShellInit = ''
             if $env.TERM? != "dumb" {
               source ${
                 pkgs.runCommand "carapace-nushell-config.nu" { }
-                  ''${pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"''
+                  ''${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"''
               }
             }
           '';
@@ -133,7 +131,6 @@
               print (greeter)
 
               export-env { load-env {
-                  SUDO_PROMPT: (^${starship} prompt --profile=sudo_prompt --terminal-width=((term size).columns) --jobs=(job list | length)))
                   PROMPT_MULTILINE_INDICATOR: (^${starship} prompt --continuation)
                   TRANSIENT_PROMPT_MULTILINE_INDICATOR: (^${starship} prompt --continuation)
                   TRANSIENT_PROMPT_INDICATOR: ""

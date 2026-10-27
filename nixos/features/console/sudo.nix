@@ -10,7 +10,6 @@
       security.sudo = {
         enable = true;
         extraConfig = ''
-          Defaults passpropmpt="\n[30m[40;36m  [0m[30m[0m [36m[0m "
           Defaults env_reset,pwfeedback
         '';
       };
