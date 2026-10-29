@@ -31,6 +31,7 @@
           stremio-linux-shell
           r2modman
           packweave
+          obsidian
         ];
     };
 }
