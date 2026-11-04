@@ -67,8 +67,6 @@
               delay_ms = 100;
               max_speed = 1500.0;
             };
-
-            focus.follows_mouse = false;
           };
 
           hot_corners.top_left = {

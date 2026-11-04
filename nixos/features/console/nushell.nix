@@ -131,10 +131,11 @@
               print (greeter)
 
               export-env { load-env {
-                  PROMPT_MULTILINE_INDICATOR: (^${starship} prompt --continuation)
-                  TRANSIENT_PROMPT_MULTILINE_INDICATOR: (^${starship} prompt --continuation)
-                  TRANSIENT_PROMPT_INDICATOR: ""
-                  TRANSIENT_PROMPT_COMMAND: {|| (^${starship} prompt --profile=transient --terminal-width=((term size).columns) --jobs=(job list | length)) }
+                SUDO_PROMPT: (${starship} prompt --profile sudo_prompt)
+                PROMPT_MULTILINE_INDICATOR: (${starship} prompt --continuation)
+                TRANSIENT_PROMPT_MULTILINE_INDICATOR: (${starship} prompt --continuation)
+                TRANSIENT_PROMPT_INDICATOR: ""
+                TRANSIENT_PROMPT_COMMAND: {|| (${starship} prompt --profile transient --terminal-width=((term size).columns) --jobs=(job list | length)) }
               }}
 
               $env.config.hooks.pre_prompt = ($env.config.hooks.pre_prompt?

@@ -11,6 +11,8 @@
         mpv
         mpvpaper
         python3
+        nix-search-tv
+        fzf
       ];
 
       programs.noctalia = {

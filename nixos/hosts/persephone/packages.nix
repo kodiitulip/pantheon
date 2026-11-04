@@ -33,6 +33,7 @@
           r2modman
           packweave
           obsidian
+          pureref
         ];
     };
 }
