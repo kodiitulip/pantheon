@@ -28,6 +28,7 @@
             withVencord = true;
             withOpenASAR = true;
           })
+          vesktop
           stremio-linux-shell
           r2modman
           packweave

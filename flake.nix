@@ -59,7 +59,7 @@
       mkFlake = flake-parts.lib.mkFlake { inherit inputs; };
       isFlake = i: i.filterNot (hasInfix "flake.nix");
       isInTemplates = i: i.filterNot (hasInfix "templates/");
-      isDisabled = i: i.filterNot (hasInfix "disabled");
+      isIgnored = i: i.filterNot (hasInfix "ignore");
     in
-    mkFlake (import-tree isFlake isInTemplates isDisabled (i: i ./.));
+    mkFlake (import-tree isFlake isInTemplates isIgnored (i: i ./.));
 }
