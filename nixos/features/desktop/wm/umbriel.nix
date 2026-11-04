@@ -92,6 +92,24 @@
             };
           };
 
+          output = {
+            DP-1 = {
+              mode = "1920x1080@75";
+              position = [
+                0
+                0
+              ];
+              focus_at_startup = true;
+            };
+            HDMI-A-1 = {
+              mode = "1920x1080@60";
+              position = [
+                0
+                (-1080)
+              ];
+            };
+          };
+
           keybinds = {
             # Media
             "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
