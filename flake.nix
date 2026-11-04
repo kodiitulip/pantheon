@@ -24,6 +24,10 @@
       url = "github:hyprismteam/Hyprism?dir=Packaging/linux/flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rootapp = {
+      url = "github:crazydisi/rootapp-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     proton-cachyos = {
       url = "github:Daaboulex/proton-cachyos-nix";
       inputs.nixpkgs.follows = "nixpkgs";

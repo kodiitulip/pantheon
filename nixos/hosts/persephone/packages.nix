@@ -1,4 +1,4 @@
-{ self, ... }:
+{ inputs, self, ... }:
 {
   flake.nixosModules.persephone =
     { pkgs, config, ... }:
@@ -34,6 +34,7 @@
           packweave
           obsidian
           pureref
+          inputs.rootapp.packages.${system}.default
         ];
     };
 }

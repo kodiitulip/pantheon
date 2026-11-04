@@ -347,10 +347,31 @@
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "proton-cachyos": "proton-cachyos",
+        "rootapp": "rootapp",
         "spicetify-nix": "spicetify-nix",
         "umbriel": "umbriel",
         "vintagestory-nix": "vintagestory-nix",
         "zen-browser": "zen-browser"
+      }
+    },
+    "rootapp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793789609,
+        "narHash": "sha256-rWKojmWGmjyElsrAxz9k/KVbIUDyL7UvrrCIXCyfhA4=",
+        "owner": "crazydisi",
+        "repo": "rootapp-flake",
+        "rev": "28785670a85fbc0fab3e4f4c688c0a876cab5d02",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crazydisi",
+        "repo": "rootapp-flake",
+        "type": "github"
       }
     },
     "spicetify-nix": {
