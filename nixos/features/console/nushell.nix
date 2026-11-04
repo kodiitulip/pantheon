@@ -26,6 +26,7 @@
                 pkgs.runCommand "carapace-nushell-config.nu" { }
                   ''${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"''
               }
+              $env.SUDO_PROMPT = $"\n(ansi black)(ansi {fg:cyan,bg:black})  (ansi {fg:black,bg:reset}) (ansi cyan) "
             }
           '';
         };
@@ -131,7 +132,6 @@
               print (greeter)
 
               export-env { load-env {
-                SUDO_PROMPT: (${starship} prompt --profile sudo_prompt)
                 PROMPT_MULTILINE_INDICATOR: (${starship} prompt --continuation)
                 TRANSIENT_PROMPT_MULTILINE_INDICATOR: (${starship} prompt --continuation)
                 TRANSIENT_PROMPT_INDICATOR: ""
