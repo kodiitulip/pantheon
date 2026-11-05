@@ -63,11 +63,6 @@
           "application/x-gnome-saved-search" = [ "nemo.desktop" ];
         };
       };
-      environment.sessionVariables = {
-        NIXOS_OZONE_WL = "1";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
-        GTK_IM_MODULE = "simple";
-      };
       environment.systemPackages = with pkgs; [
         # Misc Stuff
         nemo-with-extensions

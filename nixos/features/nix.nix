@@ -58,6 +58,7 @@
         statix
         alejandra
         manix
+        nurl
         nix-inspect
         nixfmt
         cachix

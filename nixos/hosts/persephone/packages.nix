@@ -14,8 +14,6 @@
           easyeffects
           zed-editor
           firefoxpwa
-          nurl
-          godot
           qbittorrent
           croc
           zen
@@ -24,17 +22,15 @@
         with pkgs;
         with pkgs';
         [
-          (discord.override {
-            withVencord = true;
-            withOpenASAR = true;
-          })
+          (discord.override { withVencord = true; })
           vesktop
+          inputs.rootapp.packages.${system}.default
+
           stremio-linux-shell
           r2modman
           packweave
           obsidian
           pureref
-          inputs.rootapp.packages.${system}.default
         ];
     };
 }

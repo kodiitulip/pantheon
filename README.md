@@ -1,1 +1,1 @@
-# Nixos Niri Noctalia Config
+# Nixos Umbriel + Noctalia + Noctalia Greeter Config

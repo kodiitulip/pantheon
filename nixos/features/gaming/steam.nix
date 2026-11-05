@@ -59,7 +59,7 @@
       environment.systemPackages = with pkgs; [
         python314Packages.ds4drv
         steamcmd
-        steam-tui
+        godot
       ];
       hjem.users.${username}.packages =
         with pkgs;

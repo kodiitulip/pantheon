@@ -51,7 +51,7 @@
             keyboard = {
               layout = "br";
               variant = "nodeadkeys";
-              options = "compose:rctrl";
+              options = "compose rctrl";
               numlock_toggle = true;
             };
 
@@ -110,20 +110,20 @@
 
           keybinds = {
             # Media
-            "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
-            "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
-            "XF86AudioMute" = "spawn:noctalia msg volume-mute";
-            "XF86AudioMicMute" = "spawn:noctalia msg mic-mute";
-            "XF86AudioPlay" = "spawn:noctalia msg media toggle";
-            "XF86AudioStop" = "spawn:noctalia msg media stop";
-            "XF86AudioPrev" = "spawn:noctalia msg media previous";
-            "XF86AudioNext" = "spawn:noctalia msg media next";
-            "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
-            "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
+            "XF86AudioRaiseVolume" = "spawn noctalia msg volume-up";
+            "XF86AudioLowerVolume" = "spawn noctalia msg volume-down";
+            "XF86AudioMute" = "spawn noctalia msg volume-mute";
+            "XF86AudioMicMute" = "spawn noctalia msg mic-mute";
+            "XF86AudioPlay" = "spawn noctalia msg media toggle";
+            "XF86AudioStop" = "spawn noctalia msg media stop";
+            "XF86AudioPrev" = "spawn noctalia msg media previous";
+            "XF86AudioNext" = "spawn noctalia msg media next";
+            "XF86MonBrightnessUp" = "spawn noctalia msg brightness-up";
+            "XF86MonBrightnessDown" = "spawn noctalia msg brightness-down";
 
             # Session/System
-            "Mod+Shift+E" = "spawn:noctalia msg panel-toggle session";
-            "Mod+Alt+L" = "spawn:noctalia msg session lock";
+            "Mod+Shift+E" = "spawn noctalia msg panel-toggle session";
+            "Mod+Alt+L" = "spawn noctalia msg session lock";
             "Mod+Tab" = {
               action = "overview-toggle";
               repeat = false;
@@ -139,39 +139,39 @@
               repeat = false;
             };
             "Mod+V" = {
-              action = "spawn:noctalia msg panel-toggle clipboard";
+              action = "spawn noctalia msg panel-toggle clipboard";
               repeat = false;
             };
             "Print" = {
-              action = "spawn:noctalia msg screenshot-region";
+              action = "spawn noctalia msg screenshot-region";
               repeat = false;
             };
             "Mod+Shift+Delete" = {
-              action = "scratchpad-toggle:monitor";
+              action = "scratchpad-toggle monitor";
               repeat = false;
             };
             "Mod+Shift+M" = {
-              action = "scratchpad-toggle:music";
+              action = "scratchpad-toggle music";
               repeat = false;
             };
             "Mod+Shift+W" = {
-              action = "spawn:noctalia msg panel-toggle wallpaper";
+              action = "spawn noctalia msg panel-toggle wallpaper";
               repeat = false;
             };
 
             # Apps
             "Mod+Q" = "window-close";
-            "Mod+Space" = "spawn:noctalia msg panel-toggle launcher";
+            "Mod+Space" = "spawn noctalia msg panel-toggle launcher";
             "Mod+E" = {
-              action = "spawn:nemo";
+              action = "spawn nemo";
               repeat = false;
             };
             "Mod+Alt+Return" = {
-              action = ''spawn:kitty --class="kitty-floating"'';
+              action = ''spawn kitty --class="kitty-floating"'';
               repeat = false;
             };
             "Mod+Return" = {
-              action = "spawn:kitty";
+              action = "spawn kitty";
               repeat = false;
             };
 
@@ -226,10 +226,10 @@
             };
             "Mod+R" = "window-cycle-primary-extent";
             "Mod+Shift+R" = "window-cycle-primary-extent-back";
-            "Mod+Equal" = "window-modify-width-right:0.1";
-            "Mod+Minus" = "window-modify-width-right:-0.1";
-            "Mod+Shift+Equal" = "window-modify-height-down:0.1";
-            "Mod+Shift+Minus" = "window-modify-height-down:-0.1";
+            "Mod+Equal" = "window-modify-width-right 0.1";
+            "Mod+Minus" = "window-modify-width-right -0.1";
+            "Mod+Shift+Equal" = "window-modify-height-down 0.1";
+            "Mod+Shift+Minus" = "window-modify-height-down -0.1";
 
             # Window Movement
             "Mod+Shift+J" = "window-move-or-workspace-down";
@@ -244,15 +244,15 @@
             "Mod+Shift+Period" = "window-consume-from-right";
             "Mod+Alt+Comma" = "window-consume-or-expel-left";
             "Mod+Alt+Period" = "window-consume-or-expel-right";
-            "Mod+Shift+1" = "window-move-to-workspace:1";
-            "Mod+Shift+2" = "window-move-to-workspace:2";
-            "Mod+Shift+3" = "window-move-to-workspace:3";
-            "Mod+Shift+4" = "window-move-to-workspace:4";
-            "Mod+Shift+5" = "window-move-to-workspace:5";
-            "Mod+Shift+6" = "window-move-to-workspace:6";
-            "Mod+Shift+7" = "window-move-to-workspace:7";
-            "Mod+Shift+8" = "window-move-to-workspace:8";
-            "Mod+Shift+9" = "window-move-to-workspace:9";
+            "Mod+Shift+1" = "window-move-to-workspace 1";
+            "Mod+Shift+2" = "window-move-to-workspace 2";
+            "Mod+Shift+3" = "window-move-to-workspace 3";
+            "Mod+Shift+4" = "window-move-to-workspace 4";
+            "Mod+Shift+5" = "window-move-to-workspace 5";
+            "Mod+Shift+6" = "window-move-to-workspace 6";
+            "Mod+Shift+7" = "window-move-to-workspace 7";
+            "Mod+Shift+8" = "window-move-to-workspace 8";
+            "Mod+Shift+9" = "window-move-to-workspace 9";
 
             # Column Focus
             "Mod+Home" = "column-focus-first";
@@ -272,15 +272,15 @@
             "Mod+Alt+Shift+K" = "column-move-to-workspace-previous";
             "Mod+Alt+Shift+Down" = "column-move-to-workspace-next";
             "Mod+Alt+Shift+Up" = "column-move-to-workspace-previous";
-            "Mod+Ctrl+1" = "column-move-to-workspace:1";
-            "Mod+Ctrl+2" = "column-move-to-workspace:2";
-            "Mod+Ctrl+3" = "column-move-to-workspace:3";
-            "Mod+Ctrl+4" = "column-move-to-workspace:4";
-            "Mod+Ctrl+5" = "column-move-to-workspace:5";
-            "Mod+Ctrl+6" = "column-move-to-workspace:6";
-            "Mod+Ctrl+7" = "column-move-to-workspace:7";
-            "Mod+Ctrl+8" = "column-move-to-workspace:8";
-            "Mod+Ctrl+9" = "column-move-to-workspace:9";
+            "Mod+Ctrl+1" = "column-move-to-workspace 1";
+            "Mod+Ctrl+2" = "column-move-to-workspace 2";
+            "Mod+Ctrl+3" = "column-move-to-workspace 3";
+            "Mod+Ctrl+4" = "column-move-to-workspace 4";
+            "Mod+Ctrl+5" = "column-move-to-workspace 5";
+            "Mod+Ctrl+6" = "column-move-to-workspace 6";
+            "Mod+Ctrl+7" = "column-move-to-workspace 7";
+            "Mod+Ctrl+8" = "column-move-to-workspace 8";
+            "Mod+Ctrl+9" = "column-move-to-workspace 9";
 
             # Output Focus
             "Mod+Ctrl+BracketLeft" = "output-focus-previous";
@@ -300,15 +300,15 @@
             "Mod+Shift+Backspace" = "workspace-focus-last";
             "Mod+WheelUp" = "workspace-previous";
             "Mod+WheelDown" = "workspace-next";
-            "Mod+1" = "workspace-switch:1";
-            "Mod+2" = "workspace-switch:2";
-            "Mod+3" = "workspace-switch:3";
-            "Mod+4" = "workspace-switch:4";
-            "Mod+5" = "workspace-switch:5";
-            "Mod+6" = "workspace-switch:6";
-            "Mod+7" = "workspace-switch:7";
-            "Mod+8" = "workspace-switch:8";
-            "Mod+9" = "workspace-switch:9";
+            "Mod+1" = "workspace-switch 1";
+            "Mod+2" = "workspace-switch 2";
+            "Mod+3" = "workspace-switch 3";
+            "Mod+4" = "workspace-switch 4";
+            "Mod+5" = "workspace-switch 5";
+            "Mod+6" = "workspace-switch 6";
+            "Mod+7" = "workspace-switch 7";
+            "Mod+8" = "workspace-switch 8";
+            "Mod+9" = "workspace-switch 9";
 
             # Workspace Movement
             "Mod+Shift+Page_Down" = "workspace-move-down";
