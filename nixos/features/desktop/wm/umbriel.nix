@@ -51,7 +51,7 @@
             keyboard = {
               layout = "br";
               variant = "nodeadkeys";
-              options = "compose rctrl";
+              options = "compose:rctrl";
               numlock_toggle = true;
             };
 
