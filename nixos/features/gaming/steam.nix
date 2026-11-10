@@ -65,7 +65,7 @@
         with pkgs;
         with pkgs';
         [
-          steam-art-manager
+          sgdboop
           protonup-qt
           hydralauncher
         ];
