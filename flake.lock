@@ -135,25 +135,27 @@
       }
     },
     "hyprism": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
-        "dir": "Packaging/linux/flake",
-        "lastModified": 1792242721,
-        "narHash": "sha256-p+TJ8boepQAVHoKn9XEd9aYkIQyAY0w41S6kneQjpIU=",
-        "owner": "hyprismteam",
-        "repo": "Hyprism",
-        "rev": "9e498871a474b8aa65c020192bec27af7ba73ec7",
-        "type": "github"
+        "narHash": "sha256-EARZtneNJroEfR3sA6cwizbq8iqUgiVeqNBIwQ+j7q0=",
+        "type": "file",
+        "url": "https://github.com/hyprismteam/Hyprism/releases/download/v4.0.0/Hyprism-linux-x64-4.0.0.flatpak"
       },
       "original": {
-        "dir": "Packaging/linux/flake",
-        "owner": "hyprismteam",
-        "repo": "Hyprism",
-        "type": "github"
+        "type": "file",
+        "url": "https://github.com/hyprismteam/Hyprism/releases/download/v4.0.0/Hyprism-linux-x64-4.0.0.flatpak"
+      }
+    },
+    "hytale-launcher": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-SnIk618jdfo7cDuaxOpKo6hYiU6Y6yv2YC5OPyV0TbY=",
+        "type": "file",
+        "url": "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
       }
     },
     "import-tree": {
@@ -168,6 +170,22 @@
       "original": {
         "owner": "denful",
         "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1790428548,
+        "narHash": "sha256-OsZ/I7v3ArCrk0XOUvkiU1dFtGtE1qZTHRGjvBXIKUU=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "f1f045fc8b35ff59f88982c1752d3f3a42ca6a61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "ref": "latest",
+        "repo": "nix-flatpak",
         "type": "github"
       }
     },
@@ -258,19 +276,6 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1793341285,
-        "narHash": "sha256-LOv16TsMYV2/8BUYnhSxHkOASe7es2ORbqMeLlZJ8Hc=",
-        "rev": "1c89083e451e891152365b799595cf7790a43325",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1105037.1c89083e451e/nixexprs.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      }
-    },
     "noctalia": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -342,13 +347,14 @@
         ],
         "hjem-rum": "hjem-rum",
         "hyprism": "hyprism",
+        "hytale-launcher": "hytale-launcher",
         "import-tree": "import-tree",
+        "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "proton-cachyos": "proton-cachyos",
         "rootapp": "rootapp",
-        "spicetify-nix": "spicetify-nix",
         "umbriel": "umbriel",
         "vintagestory-nix": "vintagestory-nix",
         "zen-browser": "zen-browser"
@@ -371,25 +377,6 @@
       "original": {
         "owner": "crazydisi",
         "repo": "rootapp-flake",
-        "type": "github"
-      }
-    },
-    "spicetify-nix": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3",
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1793662659,
-        "narHash": "sha256-a+za5QCDlOe/PsuMlZiBcQ13cyiyOscK17BAJFu1/dE=",
-        "owner": "Gerg-L",
-        "repo": "spicetify-nix",
-        "rev": "13e6fed4eb99f809d390fb50f591bed6cb716dc0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gerg-L",
-        "repo": "spicetify-nix",
         "type": "github"
       }
     },
@@ -420,24 +407,9 @@
         "type": "github"
       }
     },
-    "systems": {
-      "locked": {
-        "lastModified": 1791244623,
-        "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "d36eeed142f88b5a636f2e3856a53c61654cf29b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "umbriel": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {

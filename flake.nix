@@ -14,15 +14,19 @@
       url = "github:youwen5/zen-browser-flake/0ae74880377f493555038d52edd9c90178e05186";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     vintagestory-nix = {
       url = "github:PierreBorine/vintagestory-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprism = {
-      url = "github:hyprismteam/Hyprism?dir=Packaging/linux/flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://github.com/hyprismteam/Hyprism/releases/download/v4.0.0/Hyprism-linux-x64-4.0.0.flatpak";
+      flake = false;
+    };
+    hytale-launcher = {
+      url = "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak";
+      flake = false;
     };
     rootapp = {
       url = "github:crazydisi/rootapp-flake";

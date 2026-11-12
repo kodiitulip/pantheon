@@ -18,6 +18,7 @@
           croc
           zen
         ];
+
       hjem.users.${config.preferences.user.name}.packages =
         with pkgs;
         with pkgs';

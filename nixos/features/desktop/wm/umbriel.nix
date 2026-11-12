@@ -67,6 +67,11 @@
               delay_ms = 100;
               max_speed = 1500.0;
             };
+
+            focus = {
+              follows_mouse = true;
+              follows_mouse_max_scroll = 0.25;
+            };
           };
 
           hot_corners.top_left = {
@@ -313,6 +318,88 @@
             # Workspace Movement
             "Mod+Shift+Page_Down" = "workspace-move-down";
             "Mod+Shift+Page_Up" = "workspace-move-up";
+
+            "Mod+Shift+C" = {
+              action = "submap streaming";
+              repeat = false;
+            };
+            "submap[streaming],KP_5" = {
+              action = "spawn obs-cmd trigger-hotkey 'OBSBasic.Transition'";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[streaming],KP_End" = {
+              action = "spawn obs-cmd scene switch 'GameRoom'";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[streaming],KP_Home" = {
+              action = "spawn obs-cmd scene switch 'FullScreenShare'";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[streaming],KP_Add" = {
+              action = "spawn obs-cmd recording toggle";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[streaming],KP_Subtract" = {
+              action = "spawn obs-cmd audio toggle 'Mic/Aux'";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[streaming],Escape" = {
+              action = "submap reset";
+              repeat = false;
+            };
+
+            "Mod+Shift+D" = {
+              action = "submap discord";
+              repeat = false;
+            };
+            "submap[discord],1" = {
+              action = "spawn discord";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[discord],2" = {
+              action = "spawn vesktop";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[discord],3" = {
+              action = "spawn rootapp";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[discord],Escape" = {
+              action = "submap reset";
+              repeat = false;
+            };
+
+            "Alt+Tab" = {
+              action = "spawn noctalia msg window-switcher";
+              repeat = false;
+            };
+
+            "Mod+D" = {
+              action = "submap screencapture";
+              repeat = false;
+            };
+            "submap[screencapture],1" = {
+              action = "spawn noctalia msg screenshot-fullscreen pick";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[screencapture],2" = {
+              action = "spawn noctalia msg screenshot-region";
+              repeat = false;
+              submap = "reset";
+            };
+            "submap[screencapture],Escape" = {
+              action = "submap reset";
+              repeat = false;
+            };
           };
 
           layer_rule = [
@@ -348,6 +435,7 @@
               match.app_id = [
                 "^steam_app_"
                 "[mM]inecraft"
+                "[hH]ytale"
               ];
               default_output = "sunshine";
               default_workspace = 5;
@@ -424,10 +512,33 @@
               };
             }
             {
-
               match.app_id = "^packweave$";
               match.title = "Settings";
               default_floating = true;
+            }
+            {
+              match.app_id = "^md.obsidian.Obsidian$";
+              match.title = [
+                "[sS]ettings"
+                "[pP]lugins"
+              ];
+              default_floating = true;
+            }
+            {
+              default_floating = true;
+              match.app_id = "^steam$";
+              match.title = [
+                "[sS]ettings"
+                "Friend List"
+              ];
+            }
+            {
+              default_maximize = true;
+              match.app_id = "^dev.zed.Zed$";
+            }
+            {
+              default_floating = true;
+              match.app_id = "^SGDBoop$";
             }
           ];
 

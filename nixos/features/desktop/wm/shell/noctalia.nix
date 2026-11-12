@@ -4,8 +4,8 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        rose-pine-cursor
-        rose-pine-icon-theme
+        comixcursors.Opaque_Black
+        papirus-icon-theme
         sqlite
         hyprpicker
         mpv

@@ -10,10 +10,10 @@
           add_newline = true;
           command_timeout = 1000;
           format = lib.concatStrings [
-            "[](fg:overlay)"
+            "[](fg:black)"
             "$sudo"
             "$username"
-            "[](fg:overlay) "
+            "[](fg:black) "
             "$shell"
             "$directory"
             "$git_branch"
@@ -37,59 +37,48 @@
             "$time\n"
             "$character"
           ];
-          palettes.rose-pine = {
-            overlay = "black";
-            love = "red";
-            gold = "yellow";
-            rose = "cyan";
-            pine = "green";
-            foam = "blue";
-            iris = "purple";
-            text = "white";
-          };
-          palette = "rose-pine";
           profiles.transient = lib.concatStrings [
-            "[](fg:overlay)"
+            "[](fg:black)"
             "$sudo"
-            "[ 󰧱 ](bg:overlay fg:iris)"
-            "[](fg:overlay)\n"
-            " [∙](bold fg:iris) "
+            "[ 󰧱 ](bg:black fg:purple)"
+            "[](fg:black)\n"
+            " [∙](bold fg:purple) "
           ];
           profiles.sudo_prompt = lib.concatStrings [
-            "[](fg:overlay)[  ](bg:overlay fg:rose)[](fg:overlay) "
-            "[](fg:rose)  "
+            "[](fg:black)[  ](bg:black fg:cyan)[](fg:black) "
+            "[](fg:cyan)  "
           ];
-          continuation_prompt = " [∙](bold fg:iris)   ";
+          continuation_prompt = " [∙](bold fg:purple)   ";
           character = {
             format = " $symbol ";
-            success_symbol = "[󱞪](bold fg:iris)";
-            error_symbol = "[󱞪](bold fg:love)";
+            success_symbol = "[󱞪](bold fg:purple)";
+            error_symbol = "[󱞪](bold fg:red)";
           };
           fill = {
-            style = "fg:overlay";
+            style = "fg:black";
             symbol = "=";
           };
           username = {
             disabled = false;
             format = "[ 󰧱 $user ]($style)";
             show_always = true;
-            style_root = "bg:overlay fg:love";
-            style_user = "bg:overlay fg:iris";
+            style_root = "bg:black fg:red";
+            style_user = "bg:black fg:purple";
           };
           sudo = {
             disabled = false;
             format = "[ $symbol ]($style)";
-            style = "bg:overlay fg:rose";
+            style = "bg:black fg:cyan";
             symbol = "";
           };
           shell = {
             disabled = false;
-            format = "[](fg:overlay)[  $indicator ]($style)[](fg:overlay) ";
-            style = "bg:overlay fg:rose";
+            format = "[](fg:black)[  $indicator ]($style)[](fg:black) ";
+            style = "bg:black fg:cyan";
           };
           git_branch = {
             format = "[ $symbol $branch ]($style)";
-            style = "fg:foam";
+            style = "fg:blue";
             symbol = "";
           };
           git_status = {
@@ -99,17 +88,17 @@
             disabled = false;
             diverged = "⇕\[⇡\($ahead_count\)⇣\($behind_count\)\]";
             format = "([$all_status$ahead_behind ]($style))";
-            modified = "[!\($count\)](fg:gold)";
-            renamed = "[»\($count\)](fg:gold)";
-            staged = "[++\($count\)](fg:gold)";
-            stashed = "[\$](fg:gold)";
-            style = "fg:love";
-            untracked = "[?\($count\)](fg:gold)";
-            up_to_date = "[✓](bg:overlay fg:foam)";
+            modified = "[!\($count\)](fg:yellow)";
+            renamed = "[»\($count\)](fg:yellow)";
+            staged = "[++\($count\)](fg:yellow)";
+            stashed = "[\$](fg:yellow)";
+            style = "fg:red";
+            untracked = "[?\($count\)](fg:yellow)";
+            up_to_date = "[✓](bg:black fg:blue)";
           };
           directory = {
-            format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) ";
-            style = "bg:overlay fg:pine";
+            format = "[](fg:black)[ $path ]($style)[](fg:black) ";
+            style = "bg:black fg:green";
             truncation_length = 3;
             truncation_symbol = "…/";
             substitutions = {
@@ -130,15 +119,15 @@
           };
           time = {
             disabled = false;
-            format = " [](fg:overlay)[ $time 󰴈 ]($style)[](fg:overlay)";
-            style = "bg:overlay fg:rose";
+            format = " [](fg:black)[ $time 󰴈 ]($style)[](fg:black)";
+            style = "bg:black fg:cyan";
             time_format = "%R";
           };
           direnv = {
             disabled = false;
-            format = " [](fg:overlay)[ $symbol ($allowed $loaded) ]($style)[](fg:overlay)";
+            format = " [](fg:black)[ $symbol ($allowed $loaded) ]($style)[](fg:black)";
             symbol = "";
-            style = "bg:overlay fg:pine";
+            style = "bg:black fg:green";
             allowed_msg = "󰄬";
             not_allowed_msg = "";
             denied_msg = "";

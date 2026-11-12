@@ -26,14 +26,10 @@
       ];
 
       networking.hostName = "persephone";
-      services = {
-        openssh.enable = true;
-        flatpak.enable = true;
-        hardware.openrgb = {
-          enable = true;
-          package = pkgs.openrgb-with-all-plugins;
-          motherboard = "amd";
-        };
+      services.hardware.openrgb = {
+        enable = true;
+        package = pkgs.openrgb-with-all-plugins;
+        motherboard = "amd";
       };
 
       preferences.user = {
