@@ -20,10 +20,10 @@
               filesystems = [ "/nix/store:ro" ];
             };
             Environment = {
-              XCURSOR_PATH = "/run/current-system/sw/share/icons:/etc/profiles/per-user/${user}/share/icons";
+              XCURSOR_PATH = "/nix/store:/run/current-system/sw/share/icons:/etc/profiles/per-user/${user}/share/icons:/run/host/user-share/icons:/run/host/share/icons:~/.icons";
               GTK_THEME = "adw-gtk3-dark";
               ICON_THEME = "Papirus-Dark";
-              CURSOR_THEME = "Opaque_Black";
+              CURSOR_THEME = "ComixCursors-Opaque-Black";
             };
           };
         };

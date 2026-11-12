@@ -20,12 +20,13 @@
           }
         ];
         overrides.settings = {
-          "io.github.hyprismteam.HyPrism".Context = {
+          "io.github.hyprismteam.Hyprism".Context = {
             sockets = [ "x11" ];
-            # filesystems = [
-            #   "/run/current-system/sw/bin:ro"
-            #   "/etc/profiles/per-user/${user}/bin/"
-            # ];
+            filesystems = [
+              "/nix/store"
+              "/run/current-system/sw/bin:ro"
+              "/etc/profiles/per-user/${user}/bin/"
+            ];
           };
         };
       };
