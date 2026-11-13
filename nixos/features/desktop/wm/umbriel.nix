@@ -69,7 +69,7 @@
             };
 
             focus = {
-              follows_mouse = true;
+              follows_mouse = "sloppy";
               follows_mouse_max_scroll = 0.25;
             };
           };
@@ -155,9 +155,11 @@
               action = "scratchpad-toggle monitor";
               repeat = false;
             };
-            "Mod+Shift+M" = "scratchpad-window-show-next music";
-            "Mod+Alt+Shift+M" = "scratchpad-toggle music";
-            "Mod+Ctrl+Shift+M" = "window-toggle-scratchpad music";
+
+            "Mod+M" = "scratchpad-window-show-next music";
+            "Mod+Shift+M" = "scratchpad-toggle music";
+            "Mod+Alt+M" = "window-toggle-scratchpad music";
+
             "Mod+Shift+W" = {
               action = "spawn noctalia msg panel-toggle wallpaper";
               repeat = false;

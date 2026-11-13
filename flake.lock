@@ -137,7 +137,7 @@
     "hyprism": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-EARZtneNJroEfR3sA6cwizbq8iqUgiVeqNBIwQ+j7q0=",
+        "narHash": "sha256-hEUd2VWs01yU4xX2CDoSSXeTyKzbJwxI8eSTXISIJzo=",
         "type": "file",
         "url": "https://github.com/hyprismteam/Hyprism/releases/download/v4.0.0/Hyprism-linux-x64-4.0.0.flatpak"
       },
