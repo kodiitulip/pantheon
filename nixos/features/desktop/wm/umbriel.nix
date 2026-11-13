@@ -155,10 +155,9 @@
               action = "scratchpad-toggle monitor";
               repeat = false;
             };
-            "Mod+Shift+M" = {
-              action = "scratchpad-toggle music";
-              repeat = false;
-            };
+            "Mod+Shift+M" = "scratchpad-window-show-next music";
+            "Mod+Alt+Shift+M" = "scratchpad-toggle music";
+            "Mod+Ctrl+Shift+M" = "window-toggle-scratchpad music";
             "Mod+Shift+W" = {
               action = "spawn noctalia msg panel-toggle wallpaper";
               repeat = false;
@@ -494,6 +493,7 @@
             {
               match.app_id = "spotify";
               default_scratchpad = "music";
+              default_focused = true;
             }
             {
               match.app_id = "^zen$";
@@ -506,6 +506,7 @@
             {
               match.app_id = "^kitty-btop$";
               default_scratchpad = "monitor";
+              default_focused = true;
               default_floating_size = {
                 width = 0.75;
                 height = 0.75;
