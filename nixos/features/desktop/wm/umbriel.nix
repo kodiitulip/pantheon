@@ -156,9 +156,9 @@
               repeat = false;
             };
 
-            "Mod+M" = "scratchpad-window-show-next music";
-            "Mod+Shift+M" = "scratchpad-toggle music";
-            "Mod+Alt+M" = "window-toggle-scratchpad music";
+            "Mod+M" = "scratchpad-window-show-next minimize";
+            "Mod+Alt+M" = "scratchpad-toggle minimize";
+            "Mod+Shift+M" = "window-toggle-scratchpad minimize";
 
             "Mod+Shift+W" = {
               action = "spawn noctalia msg panel-toggle wallpaper";
@@ -440,10 +440,16 @@
               ];
               default_output = "sunshine";
               default_workspace = 5;
+              default_fullscreen = true;
             }
             {
               match.app_id = "^steam$";
               match.title = "[Bb]ig [Pp]icture";
+              default_output = "sunshine";
+              default_fullscreen = true;
+            }
+            {
+              match.app_id = "^spotify$";
               default_output = "sunshine";
               default_fullscreen = true;
             }
@@ -462,18 +468,6 @@
               match.app_id = "^dev.zed.Zed$";
               match.title = "[Ss]ettings";
               default_floating = true;
-              default_floating_size = {
-                width = 0.5;
-                height = 0.5;
-              };
-            }
-            {
-              match.app_id = "^dev.noctalia.UmbrielSharePicker$";
-              default_floating = true;
-              default_floating_size = {
-                width = 0.25;
-                height = 0.5;
-              };
             }
             {
               match.app_id = [
@@ -481,21 +475,22 @@
                 "nemo"
                 "xdg-desktop-portal-gtk"
                 "^dev.noctalia.Noctalia$"
+                "^dev.noctalia.UmbrielSharePicker$"
                 "^org.gnome.FileRoller$"
                 "pwvucontrol"
                 "[nN]autilus"
                 "g[tT]humb"
               ];
               default_floating = true;
-              default_floating_size = {
-                width = 0.75;
-                height = 0.75;
-              };
             }
             {
-              match.app_id = "spotify";
-              default_scratchpad = "music";
+              match.app_id = "^kitty-btop$";
+              default_scratchpad = "monitor";
               default_focused = true;
+              default_floating_size = {
+                width = 0.8;
+                height = 0.75;
+              };
             }
             {
               match.app_id = "^zen$";
@@ -504,15 +499,6 @@
             {
               match.content_type = "photo";
               default_floating = true;
-            }
-            {
-              match.app_id = "^kitty-btop$";
-              default_scratchpad = "monitor";
-              default_focused = true;
-              default_floating_size = {
-                width = 0.75;
-                height = 0.75;
-              };
             }
             {
               match.app_id = "^packweave$";
@@ -547,12 +533,13 @@
 
           scratchpad = [
             {
-              name = "music";
-              spawn_when_empty = "spotify";
+              name = "minimize";
+              hide_when_empty = true;
             }
             {
               name = "monitor";
-              spawn_when_empty = "kitty --class=\"kitty-btop\" btop";
+              hide_when_empty = true;
+              spawn_when_empty = ''kitty --class="kitty-btop" btop'';
             }
           ];
         };

@@ -6,6 +6,9 @@
 
   flake.nixosModules.persephone =
     { pkgs, config, ... }:
+    let
+      username = config.preferences.user.name;
+    in
     {
       imports = with self.nixosModules; [
         base
@@ -26,10 +29,30 @@
       ];
 
       networking.hostName = "persephone";
-      services.hardware.openrgb = {
-        enable = true;
-        package = pkgs.openrgb-with-all-plugins;
-        motherboard = "amd";
+      services = {
+        hardware.openrgb = {
+          enable = true;
+          package = pkgs.openrgb-with-all-plugins;
+          motherboard = "amd";
+        };
+        postgresql = {
+          enable = true;
+          authentication = pkgs.lib.mkOverride 10 ''
+            #type database DBuser origin-address auth-method
+            local all      all     trust
+            # ipv4
+            host  all      all     127.0.0.1/32  trust
+            # ipv6
+            host  all      all     ::1/128       trust
+          '';
+          enableTCPIP = true;
+          # port = 5432;
+          ensureUsers = [
+            {
+              name = username;
+            }
+          ];
+        };
       };
 
       preferences.user = {
@@ -39,7 +62,7 @@
         face = ./avatar.png;
       };
 
-      hjem.users.${config.preferences.user.name}.rum.programs.git = {
+      hjem.users.${username}.rum.programs.git = {
         enable = true;
         settings.user = {
           email = "kodii.tulip@proton.me";
