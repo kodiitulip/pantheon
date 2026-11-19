@@ -156,9 +156,9 @@
               repeat = false;
             };
 
-            "Mod+M" = "scratchpad-window-show-next minimize";
+            "Mod+M" = "window-restore-minimize";
+            "Mod+Shift+M" = "window-minimize";
             "Mod+Alt+M" = "scratchpad-toggle minimize";
-            "Mod+Shift+M" = "window-toggle-scratchpad minimize";
 
             "Mod+Shift+W" = {
               action = "spawn noctalia msg panel-toggle wallpaper";
