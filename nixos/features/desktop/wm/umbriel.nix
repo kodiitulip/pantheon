@@ -74,6 +74,8 @@
             };
           };
 
+          screencast.disable_dynamic_confirmation = true;
+
           hot_corners.top_left = {
             enabled = true;
             delay_ms = 500;
@@ -110,6 +112,14 @@
                 0
                 (-1080)
               ];
+            };
+            sunshine = {
+              mode = "1920x1080@60";
+              position = [
+                0
+                1080
+              ];
+              workspaces = [ "stream" ];
             };
           };
 
@@ -156,7 +166,7 @@
               repeat = false;
             };
 
-            "Mod+M" = "window-restore-minimize";
+            "Mod+M" = "window-restore-minimized";
             "Mod+Shift+M" = "window-minimize";
             "Mod+Alt+M" = "scratchpad-toggle minimize";
 
@@ -439,7 +449,7 @@
                 "[hH]ytale"
               ];
               default_output = "sunshine";
-              default_workspace = 5;
+              default_workspace = "stream";
               default_fullscreen = true;
             }
             {
@@ -528,6 +538,12 @@
             {
               default_floating = true;
               match.app_id = "^SGDBoop$";
+            }
+            {
+              match.app_id = "stremio";
+              default_output = "sunshine";
+              default_fullscreen = true;
+              default_workspace = "stream";
             }
           ];
 

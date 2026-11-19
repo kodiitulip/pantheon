@@ -63,6 +63,9 @@
         ];
       };
 
+      environment.sessionVariables = {
+        PROTON_USE_WAYLAND = 1;
+      };
       environment.systemPackages = with pkgs; [
         python314Packages.ds4drv
         steamcmd
